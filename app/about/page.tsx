@@ -3,6 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import ContactForm from '@/components/ContactForm'
 
 function AnimatedSection({
@@ -179,15 +180,18 @@ export default function AboutPage() {
               <div className="glass-card rounded-xl p-7 relative overflow-hidden">
                 <div className="absolute top-0 left-0 right-0 h-px bg-gold-gradient" aria-hidden="true" />
 
-                {/* Avatar placeholder */}
+                {/* Profile photo */}
                 <div
-                  className="w-16 h-16 rounded-full mb-5 flex items-center justify-center border border-gold/30"
-                  style={{
-                    background: 'linear-gradient(135deg, #1c1e2e 0%, #161822 100%)',
-                  }}
-                  aria-label="Kyle — founder of Stackwell Creative"
+                  className="w-20 h-20 rounded-full mb-5 overflow-hidden border-2 flex-shrink-0"
+                  style={{ borderColor: 'rgba(200,160,78,0.4)' }}
                 >
-                  <span className="font-serif text-2xl font-light text-gold">K</span>
+                  <Image
+                    src="/images/kyle-profile.jpg"
+                    alt="Kyle — founder of Stackwell Creative"
+                    width={80}
+                    height={80}
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
 
                 <h2 className="font-sans text-2xl font-semibold text-text-primary mb-1">
@@ -199,23 +203,22 @@ export default function AboutPage() {
 
                 <div className="space-y-4 font-sans text-sm text-text-muted leading-relaxed font-light">
                   <p>
-                    I started Stackwell Creative after spending time helping local businesses
-                    near where I'm from get online properly. Not just a website — a site that
-                    actually brought them work.
+                    I started Stackwell Creative after helping a few local trades get their websites sorted.
                   </p>
                   <p>
-                    What struck me was how many brilliant tradesmen were out there doing
-                    excellent work, but their online presence made them look like they'd just
-                    started up. Meanwhile their competitors, who were sometimes doing worse
-                    work, were getting all the calls because they showed up on Google.
+                    What I kept seeing was lads doing top quality work — years of experience, proper graft — but their website made them look like they&apos;d just started yesterday.
                   </p>
                   <p>
-                    That felt wrong. So I focused on fixing it.
+                    At the same time, other companies with worse work were getting all the calls. Not because they were better — just because they looked better online.
                   </p>
                   <p>
-                    We're small enough that every client gets my personal attention. You're not
-                    dealing with an account manager — you're dealing with the person who built
-                    your site.
+                    That didn&apos;t sit right with me. So I decided to fix it.
+                  </p>
+                  <p>
+                    I build websites that actually bring in work — not just something that &ldquo;looks nice&rdquo; but does nothing.
+                  </p>
+                  <p>
+                    And because I keep things small, you deal directly with me the whole way through. No middlemen, no being passed around — just someone who understands what you need and gets it done properly.
                   </p>
                 </div>
               </div>
