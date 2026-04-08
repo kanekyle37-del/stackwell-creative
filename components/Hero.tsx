@@ -8,15 +8,17 @@ import { FloatingPaths } from '@/components/ui/background-paths'
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.13, delayChildren: 0.1 } },
+  // Shorter delay so heading appears faster (better LCP)
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 22 },
+  // Use opacity: 0.01 not 0 — Lighthouse can measure the element immediately
+  hidden: { opacity: 0.01, y: 18 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
   },
 }
 

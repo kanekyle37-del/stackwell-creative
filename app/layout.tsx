@@ -4,18 +4,18 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
-import MobileCTABar from '@/components/MobileCTABar'
+import FreeQuoteButton from '@/components/FreeQuoteButton'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400'],
   variable: '--font-cormorant',
   display: 'swap',
 })
 
 const outfit = Outfit({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600'],
   variable: '--font-outfit',
   display: 'swap',
 })
@@ -94,6 +94,14 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
       <head>
         <link rel="preconnect" href="https://api.web3forms.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload hero LCP image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/portfolio-hollyfield-roofing.jpg"
+          fetchPriority="high"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -101,10 +109,10 @@ export default function RootLayout({
       </head>
       <body className="bg-bg-primary text-text-primary font-sans antialiased">
         <Navbar />
-        <main className="pb-16 md:pb-0">{children}</main>
+        <main>{children}</main>
         <Footer />
+        <FreeQuoteButton />
         <WhatsAppButton />
-        <MobileCTABar />
       </body>
     </html>
   )
