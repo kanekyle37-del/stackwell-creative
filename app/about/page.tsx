@@ -190,7 +190,7 @@ export default function AboutPage() {
                     alt="Kyle — founder of Stackwell Creative"
                     width={80}
                     height={80}
-                    className="w-full h-full object-cover object-top"
+                    className="w-full h-full object-cover object-center"
                   />
                 </div>
 
