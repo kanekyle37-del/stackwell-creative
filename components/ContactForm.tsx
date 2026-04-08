@@ -6,6 +6,16 @@ import { useRef } from 'react'
 
 type FormState = 'idle' | 'loading' | 'success' | 'error'
 
+const trades = [
+  'Roofer',
+  'Plasterer',
+  'Painter & Decorator',
+  'Joiner / Carpenter',
+  'Plumber',
+  'Landscaper',
+  'Other',
+]
+
 export default function ContactForm() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
@@ -14,29 +24,21 @@ export default function ContactForm() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [formData, setFormData] = useState({
     name: '',
-    businessName: '',
     phone: '',
-    email: '',
-    message: '',
+    trade: '',
   })
 
   const validate = () => {
     const newErrors: Record<string, string> = {}
     if (!formData.name.trim()) newErrors.name = 'Please enter your name'
-    if (!formData.businessName.trim()) newErrors.businessName = 'Please enter your business name'
     if (!formData.phone.trim()) newErrors.phone = 'Please enter your phone number'
-    if (!formData.email.trim()) {
-      newErrors.email = 'Please enter your email address'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address'
-    }
+    if (!formData.trade) newErrors.trade = 'Please select your trade'
     return newErrors
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
-    // Clear error on change
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }))
     }
@@ -57,13 +59,11 @@ export default function ContactForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY', // Replace with your key
+          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY',
           name: formData.name,
-          business_name: formData.businessName,
           phone: formData.phone,
-          email: formData.email,
-          message: formData.message || 'No message provided',
-          subject: `New enquiry from ${formData.businessName} — Stackwell Creative`,
+          trade: formData.trade,
+          subject: `New callback request from ${formData.name} (${formData.trade}) — Stackwell Creative`,
         }),
       })
 
@@ -71,7 +71,7 @@ export default function ContactForm() {
 
       if (data.success) {
         setFormState('success')
-        setFormData({ name: '', businessName: '', phone: '', email: '', message: '' })
+        setFormData({ name: '', phone: '', trade: '' })
       } else {
         setFormState('error')
       }
@@ -113,25 +113,25 @@ export default function ContactForm() {
               id="contact-heading"
               className="font-sans text-4xl sm:text-5xl font-semibold text-text-primary mb-6 leading-tight"
             >
-              Let's talk about
-              <br />
-              <span className="text-gold-gradient italic">your new site</span>
+              Leave your number.{' '}
+              <span className="text-gold-gradient italic">We&apos;ll do the rest.</span>
             </h2>
             <p className="font-sans text-text-muted text-base leading-relaxed mb-8 font-light">
-              Fill in the form and we'll get back to you within a few hours. No
-              hard sell — just a straight conversation about what you need.
+              Drop your name and number and we&apos;ll call you back for a quick 10-minute chat.
+              No commitment, no pressure. Just a straight conversation about whether a website
+              makes sense for your business.
             </p>
 
             {/* What happens next */}
             <div className="space-y-4">
               {[
-                { step: '1', text: "We'll review your enquiry and get back to you within hours" },
-                { step: '2', text: "We'll have a quick 15-minute call to understand your business" },
-                { step: '3', text: "We'll send over a proposal. No obligation." },
+                { step: '1', text: 'You leave your number' },
+                { step: '2', text: 'We call you back within a few hours' },
+                { step: '3', text: "If it's a fit, we get started. If not, no worries." },
               ].map((item) => (
                 <div key={item.step} className="flex items-start gap-4">
                   <div className="w-7 h-7 rounded-full border border-gold/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="font-serif text-xs text-gold">{item.step}</span>
+                    <span className="font-sans text-xs text-gold">{item.step}</span>
                   </div>
                   <p className="font-sans text-sm text-text-muted font-light leading-relaxed">
                     {item.text}
@@ -168,214 +168,173 @@ export default function ContactForm() {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <AnimatePresence mode="wait">
-          {formState === 'success' ? (
-              <motion.div
-                key="success"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.4, ease: 'easeOut' }}
-                className="glass-card rounded-xl p-10 text-center"
-              >
-                <div className="w-14 h-14 rounded-full bg-success/10 border border-success/30 flex items-center justify-center mx-auto mb-6">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4aba7a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M20 6L9 17l-5-5" />
-                  </svg>
-                </div>
-                <h3 className="font-sans text-2xl font-semibold text-text-primary mb-3">
-                  Enquiry received
-                </h3>
-                <p className="font-sans text-sm text-text-muted leading-relaxed">
-                  Thanks for getting in touch. We'll review your message and get back to you within a few hours.
-                  If you need to speak to someone sooner, message us on WhatsApp.
-                </p>
-                <a
-                  href="https://wa.me/447305226059"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 mt-6 text-sm font-sans text-gold hover:text-gold-bright transition-colors cursor-pointer"
+              {formState === 'success' ? (
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="glass-card rounded-xl p-10 text-center"
                 >
-                  WhatsApp us now
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </a>
-              </motion.div>
-            ) : (
-              <motion.div
-                key="form"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
-              >
-              <form
-                onSubmit={handleSubmit}
-                noValidate
-                className="glass-card rounded-xl p-7 sm:p-8 space-y-5"
-                aria-label="Enquiry form"
-              >
-                {/* Name */}
-                <div>
-                  <label htmlFor="name" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
-                    Your Name <span className="text-gold" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    autoComplete="name"
-                    placeholder="John Smith"
-                    className={`w-full bg-bg-primary border rounded px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/60 transition-colors duration-200 ${
-                      errors.name ? 'border-red-500/50' : 'border-gold/20'
-                    }`}
-                    aria-required="true"
-                    aria-describedby={errors.name ? 'name-error' : undefined}
-                  />
-                  {errors.name && (
-                    <p id="name-error" className="font-sans text-xs text-red-400 mt-1.5" role="alert">
-                      {errors.name}
-                    </p>
-                  )}
-                </div>
-
-                {/* Business name */}
-                <div>
-                  <label htmlFor="businessName" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
-                    Business Name <span className="text-gold" aria-hidden="true">*</span>
-                  </label>
-                  <input
-                    id="businessName"
-                    type="text"
-                    name="businessName"
-                    value={formData.businessName}
-                    onChange={handleChange}
-                    placeholder="Smith Roofing Ltd"
-                    className={`w-full bg-bg-primary border rounded px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/60 transition-colors duration-200 ${
-                      errors.businessName ? 'border-red-500/50' : 'border-gold/20'
-                    }`}
-                    aria-required="true"
-                    aria-describedby={errors.businessName ? 'business-error' : undefined}
-                  />
-                  {errors.businessName && (
-                    <p id="business-error" className="font-sans text-xs text-red-400 mt-1.5" role="alert">
-                      {errors.businessName}
-                    </p>
-                  )}
-                </div>
-
-                {/* Phone + Email row */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="phone" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
-                      Phone <span className="text-gold" aria-hidden="true">*</span>
-                    </label>
-                    <input
-                      id="phone"
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      autoComplete="tel"
-                      placeholder="07700 900000"
-                      className={`w-full bg-bg-primary border rounded px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/60 transition-colors duration-200 ${
-                        errors.phone ? 'border-red-500/50' : 'border-gold/20'
-                      }`}
-                      aria-required="true"
-                      aria-describedby={errors.phone ? 'phone-error' : undefined}
-                    />
-                    {errors.phone && (
-                      <p id="phone-error" className="font-sans text-xs text-red-400 mt-1.5" role="alert">
-                        {errors.phone}
-                      </p>
-                    )}
+                  <div className="w-14 h-14 rounded-full bg-success/10 border border-success/30 flex items-center justify-center mx-auto mb-6">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4aba7a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
                   </div>
-
-                  <div>
-                    <label htmlFor="email" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
-                      Email <span className="text-gold" aria-hidden="true">*</span>
-                    </label>
-                    <input
-                      id="email"
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      autoComplete="email"
-                      placeholder="you@example.com"
-                      className={`w-full bg-bg-primary border rounded px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/60 transition-colors duration-200 ${
-                        errors.email ? 'border-red-500/50' : 'border-gold/20'
-                      }`}
-                      aria-required="true"
-                      aria-describedby={errors.email ? 'email-error' : undefined}
-                    />
-                    {errors.email && (
-                      <p id="email-error" className="font-sans text-xs text-red-400 mt-1.5" role="alert">
-                        {errors.email}
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                {/* Message — optional */}
-                <div>
-                  <label htmlFor="message" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
-                    Message{' '}
-                    <span className="text-text-dim normal-case tracking-normal font-light">(optional)</span>
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    placeholder="Tell us a bit about your business, what trade you're in, and what you're looking for..."
-                    className="w-full bg-bg-primary border border-gold/20 rounded px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/60 transition-colors duration-200 resize-none"
-                  />
-                </div>
-
-                {formState === 'error' && (
-                  <p className="font-sans text-sm text-red-400 text-center" role="alert">
-                    Something went wrong. Please try again or{' '}
-                    <a href="https://wa.me/447305226059" className="underline hover:text-gold transition-colors">
-                      message us on WhatsApp
-                    </a>
-                    .
+                  <h3 className="font-sans text-2xl font-semibold text-text-primary mb-3">
+                    We&apos;ll be in touch soon
+                  </h3>
+                  <p className="font-sans text-sm text-text-muted leading-relaxed">
+                    Thanks for leaving your number. We&apos;ll give you a call within a few hours for a quick chat.
+                    If you need us sooner, message us on WhatsApp.
                   </p>
-                )}
-
-                <motion.button
-                  type="submit"
-                  disabled={formState === 'loading'}
-                  whileHover={formState !== 'loading' ? { scale: 1.02, boxShadow: '0 8px 30px rgba(200,160,78,0.3)' } : {}}
-                  whileTap={formState !== 'loading' ? { scale: 0.98 } : {}}
-                  transition={{ duration: 0.2, ease: 'easeOut' }}
-                  className="w-full py-4 bg-gold text-bg-primary font-sans font-medium text-base tracking-wide rounded hover:bg-gold-bright transition-colors duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-                  style={{ willChange: 'transform' }}
-                  aria-busy={formState === 'loading'}
+                  <a
+                    href="https://wa.me/447305226059"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 mt-6 text-sm font-sans text-gold hover:text-gold-bright transition-colors cursor-pointer"
+                  >
+                    WhatsApp us now
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="form"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  {formState === 'loading' ? (
-                    <>
-                      <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                      </svg>
-                      Sending...
-                    </>
-                  ) : (
-                    'Get My Free Quote'
-                  )}
-                </motion.button>
+                  <form
+                    onSubmit={handleSubmit}
+                    noValidate
+                    className="glass-card rounded-xl p-7 sm:p-8 space-y-5"
+                    aria-label="Callback request form"
+                  >
+                    {/* Name */}
+                    <div>
+                      <label htmlFor="name" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
+                        Your Name <span className="text-gold" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        autoComplete="name"
+                        placeholder="John Smith"
+                        className={`w-full bg-bg-primary border rounded px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/60 transition-colors duration-200 ${
+                          errors.name ? 'border-red-500/50' : 'border-gold/20'
+                        }`}
+                        aria-required="true"
+                        aria-describedby={errors.name ? 'name-error' : undefined}
+                      />
+                      {errors.name && (
+                        <p id="name-error" className="font-sans text-xs text-red-400 mt-1.5" role="alert">
+                          {errors.name}
+                        </p>
+                      )}
+                    </div>
 
-                <p className="font-sans text-xs text-text-dim text-center">
-                  We'll get back to you within a few hours.
-                </p>
-              </form>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                    {/* Phone */}
+                    <div>
+                      <label htmlFor="phone" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
+                        Phone Number <span className="text-gold" aria-hidden="true">*</span>
+                      </label>
+                      <input
+                        id="phone"
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        autoComplete="tel"
+                        placeholder="07700 900000"
+                        className={`w-full bg-bg-primary border rounded px-4 py-3 font-sans text-sm text-text-primary placeholder:text-text-dim focus:outline-none focus:border-gold/60 transition-colors duration-200 ${
+                          errors.phone ? 'border-red-500/50' : 'border-gold/20'
+                        }`}
+                        aria-required="true"
+                        aria-describedby={errors.phone ? 'phone-error' : undefined}
+                      />
+                      {errors.phone && (
+                        <p id="phone-error" className="font-sans text-xs text-red-400 mt-1.5" role="alert">
+                          {errors.phone}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Trade */}
+                    <div>
+                      <label htmlFor="trade" className="block font-sans text-xs font-medium tracking-wide text-text-muted uppercase mb-2">
+                        What&apos;s Your Trade? <span className="text-gold" aria-hidden="true">*</span>
+                      </label>
+                      <select
+                        id="trade"
+                        name="trade"
+                        value={formData.trade}
+                        onChange={handleChange}
+                        className={`w-full bg-bg-primary border rounded px-4 py-3 font-sans text-sm text-text-primary focus:outline-none focus:border-gold/60 transition-colors duration-200 cursor-pointer ${
+                          errors.trade ? 'border-red-500/50' : 'border-gold/20'
+                        } ${!formData.trade ? 'text-text-dim' : ''}`}
+                        aria-required="true"
+                        aria-describedby={errors.trade ? 'trade-error' : undefined}
+                      >
+                        <option value="" disabled>Select your trade…</option>
+                        {trades.map((t) => (
+                          <option key={t} value={t}>{t}</option>
+                        ))}
+                      </select>
+                      {errors.trade && (
+                        <p id="trade-error" className="font-sans text-xs text-red-400 mt-1.5" role="alert">
+                          {errors.trade}
+                        </p>
+                      )}
+                    </div>
+
+                    {formState === 'error' && (
+                      <p className="font-sans text-sm text-red-400 text-center" role="alert">
+                        Something went wrong. Please try again or{' '}
+                        <a href="https://wa.me/447305226059" className="underline hover:text-gold transition-colors">
+                          message us on WhatsApp
+                        </a>
+                        .
+                      </p>
+                    )}
+
+                    <motion.button
+                      type="submit"
+                      disabled={formState === 'loading'}
+                      whileHover={formState !== 'loading' ? { scale: 1.02, boxShadow: '0 8px 30px rgba(200,160,78,0.3)' } : {}}
+                      whileTap={formState !== 'loading' ? { scale: 0.98 } : {}}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                      className="w-full py-4 bg-gold text-bg-primary font-sans font-medium text-base tracking-wide rounded hover:bg-gold-bright transition-colors duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                      style={{ willChange: 'transform' }}
+                      aria-busy={formState === 'loading'}
+                    >
+                      {formState === 'loading' ? (
+                        <>
+                          <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        'Get My Free Quote'
+                      )}
+                    </motion.button>
+
+                    <p className="font-sans text-sm text-text-muted text-center font-light">
+                      We&apos;ll give you a call within a few hours. No hard sell — just a quick chat about what you need.
+                    </p>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>

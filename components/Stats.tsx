@@ -22,7 +22,7 @@ function StarRow() {
 }
 
 function CountUp({ target, isInView }: { target: number; isInView: boolean }) {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(target)
   const started = useRef(false)
   const rafRef = useRef<number>(0)
 

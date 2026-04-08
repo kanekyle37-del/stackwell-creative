@@ -83,7 +83,8 @@ function LaptopMockup() {
             src="/images/portfolio-hollyfield-roofing.jpg"
             alt="Hollyfield Roofing website"
             fill
-            sizes="(max-width: 640px) 92vw, (max-width: 1024px) 80vw, 600px"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 90vw, 1200px"
+            quality={95}
             className="object-cover object-top"
             priority
           />
@@ -158,7 +159,8 @@ function PhoneMockup() {
           src="/images/portfolio-spires-decorating-mobile.jpg"
           alt="Spires Decorating on mobile"
           fill
-          sizes="140px"
+          sizes="280px"
+          quality={95}
           className="object-cover object-top"
         />
         <div
@@ -282,9 +284,8 @@ export default function Hero() {
               className="font-sans font-light leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.8vw, 1.125rem)', color: '#8a8680', maxWidth: '480px' }}
             >
-              We build sites for tradesmen that turn Google searches into paying customers.
-              Your reviews, your work, your prices — all in one place that brings in leads
-              while you&apos;re on the job.
+              When someone in your area needs a tradesman, your name shows up first.
+              They see your reviews, check your prices, and call you — not your competitor.
             </motion.p>
 
             {/* CTA buttons */}
@@ -322,15 +323,26 @@ export default function Hero() {
             </motion.div>
 
             {/* Trust strip */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-x-5 gap-y-2">
-              {['Live in 5 days', 'No contracts', 'Cancel anytime'].map(item => (
-                <span key={item} className="flex items-center gap-1.5 font-sans text-xs font-light" style={{ color: '#5a5854' }}>
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                    <path d="M2 6l2.5 2.5L10 3.5" stroke="#c8a04e" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  {item}
+            <motion.div variants={itemVariants} className="flex flex-col gap-3">
+              <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+                {['Live in 5 days', 'No contracts', 'Cancel anytime'].map(item => (
+                  <span key={item} className="flex items-center gap-1.5 font-sans text-xs font-light" style={{ color: '#5a5854' }}>
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                      <path d="M2 6l2.5 2.5L10 3.5" stroke="#c8a04e" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    {item}
+                  </span>
+                ))}
+              </div>
+              {/* Guarantee line */}
+              <div className="flex items-center gap-2">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flexShrink: 0 }}>
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+                <span className="font-sans text-sm font-light" style={{ color: '#c8a04e' }}>
+                  If your site doesn&apos;t get an enquiry in the first 30 days, you don&apos;t pay monthly until it does.
                 </span>
-              ))}
+              </div>
             </motion.div>
           </motion.div>
 

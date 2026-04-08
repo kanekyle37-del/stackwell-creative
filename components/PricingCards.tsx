@@ -14,6 +14,12 @@ interface PricingTier {
   cta: string
 }
 
+const priceComparisons: Record<string, string> = {
+  starter: "That's less than a tank of fuel",
+  growth: 'Less than a skip hire',
+  pro: "Less than one day's materials",
+}
+
 export const pricingTiers: PricingTier[] = [
   {
     id: 'starter',
@@ -164,6 +170,11 @@ export default function PricingCards({ compact = false }: PricingCardsProps) {
                   /month
                 </span>
               </div>
+              {priceComparisons[tier.id] && (
+                <p className="font-sans text-xs italic font-light" style={{ color: '#5a5854' }}>
+                  {priceComparisons[tier.id]}
+                </p>
+              )}
             </div>
 
             <div className="gold-line" aria-hidden="true" />
@@ -184,7 +195,7 @@ export default function PricingCards({ compact = false }: PricingCardsProps) {
 
             {compact && (
               <ul className="flex flex-col gap-2 flex-1">
-                {tier.features.slice(0, 3).map((feature) => (
+                {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-2.5">
                     <CheckIcon />
                     <span className="font-sans text-sm text-text-muted leading-snug font-light">
@@ -192,11 +203,6 @@ export default function PricingCards({ compact = false }: PricingCardsProps) {
                     </span>
                   </li>
                 ))}
-                {tier.features.length > 3 && (
-                  <li className="font-sans text-xs text-text-dim mt-1">
-                    +{tier.features.length - 3} more included
-                  </li>
-                )}
               </ul>
             )}
 

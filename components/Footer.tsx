@@ -104,7 +104,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:hello@stackwellcreative.com"
+                  href="mailto:kanekyle37@gmail.com"
                   className="flex items-center gap-2.5 font-sans text-sm text-text-muted hover:text-gold transition-colors duration-200 cursor-pointer"
                 >
                   <svg
@@ -122,7 +122,7 @@ export default function Footer() {
                     <rect x="2" y="4" width="20" height="16" rx="2" />
                     <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                   </svg>
-                  hello@stackwellcreative.com
+                  kanekyle37@gmail.com
                 </a>
               </li>
             </ul>

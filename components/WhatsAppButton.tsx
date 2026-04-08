@@ -1,23 +1,42 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export default function WhatsAppButton() {
   const [showTooltip, setShowTooltip] = useState(false)
+  const [hovered, setHovered] = useState(false)
+
+  // Show auto-tooltip 3s after page load, hide after 5s — once per session
+  useEffect(() => {
+    if (typeof sessionStorage !== 'undefined' && sessionStorage.getItem('wa-tip-shown')) return
+
+    const showTimer = setTimeout(() => {
+      setShowTooltip(true)
+      sessionStorage.setItem('wa-tip-shown', '1')
+
+      const hideTimer = setTimeout(() => setShowTooltip(false), 5000)
+      return () => clearTimeout(hideTimer)
+    }, 3000)
+
+    return () => clearTimeout(showTimer)
+  }, [])
+
+  // Show tooltip on hover (separate from auto-show)
+  const tooltipVisible = showTooltip || hovered
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
       <AnimatePresence>
-        {showTooltip && (
+        {tooltipVisible && (
           <motion.div
-            initial={{ opacity: 0, y: 4, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 4, scale: 0.95 }}
-            transition={{ duration: 0.15 }}
+            initial={{ opacity: 0, x: 12, scale: 0.95 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 8, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
             className="bg-bg-card border border-gold/20 text-text-primary text-sm font-sans px-4 py-2 rounded-lg shadow-card whitespace-nowrap"
           >
-            Message us on WhatsApp
+            Got a quick question? Message us
           </motion.div>
         )}
       </AnimatePresence>
@@ -31,8 +50,8 @@ export default function WhatsAppButton() {
         style={{ background: '#25D366' }}
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.95 }}
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
       >
         <svg
           width="28"

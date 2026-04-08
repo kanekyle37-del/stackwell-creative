@@ -77,8 +77,8 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="font-sans text-text-muted text-lg mb-10 max-w-xl mx-auto leading-relaxed font-light"
         >
-          Every week you don't have a proper website is a week your competitors
-          are picking up the jobs that should be yours.
+          Right now, someone in your area is Googling your trade. If you don&apos;t
+          show up, your competitor does — and he gets the job.
         </motion.p>
 
         <motion.div
