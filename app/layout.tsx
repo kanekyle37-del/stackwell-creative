@@ -4,6 +4,7 @@ import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
+import MobileCTABar from '@/components/MobileCTABar'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -21,11 +22,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Stackwell Creative — Websites That Win Work',
+    default: 'Stackwell Creative — Websites for UK Tradesmen',
     template: '%s | Stackwell Creative',
   },
   description:
-    'We build websites for UK tradesmen that turn Google searches into paying customers. Custom sites for roofers, plasterers, painters, joiners and more.',
+    'Custom websites for roofers, plasterers, decorators and tradesmen. Live in 5 days. First enquiry within 30 days or you don\'t pay monthly. From £299.',
   keywords: [
     'website design for tradesmen',
     'roofer website',
@@ -42,22 +43,22 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: 'https://stackwellcreative.com',
     siteName: 'Stackwell Creative',
-    title: 'Stackwell Creative — Websites That Win Work',
+    title: 'Stackwell Creative — Websites for UK Tradesmen',
     description:
-      'Custom websites for UK tradesmen. Built to get you found on Google and turn visitors into paying customers.',
+      'Custom websites for roofers, plasterers, decorators and tradesmen. Live in 5 days. First enquiry within 30 days or you don\'t pay monthly. From £299.',
     images: [
       {
         url: '/images/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Stackwell Creative — Websites That Win Work',
+        alt: 'Stackwell Creative — Websites for UK Tradesmen',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Stackwell Creative — Websites That Win Work',
-    description: 'Custom websites for UK tradesmen. Built to get you found on Google.',
+    title: 'Stackwell Creative — Websites for UK Tradesmen',
+    description: 'Custom websites for roofers, plasterers and tradesmen. Live in 5 days. From £299.',
     images: ['/images/og-image.jpg'],
   },
   robots: {
@@ -92,6 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
       <head>
+        <link rel="preconnect" href="https://api.web3forms.com" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -99,9 +101,10 @@ export default function RootLayout({
       </head>
       <body className="bg-bg-primary text-text-primary font-sans antialiased">
         <Navbar />
-        <main>{children}</main>
+        <main className="pb-16 md:pb-0">{children}</main>
         <Footer />
         <WhatsAppButton />
+        <MobileCTABar />
       </body>
     </html>
   )

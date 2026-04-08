@@ -114,7 +114,7 @@ export default function PortfolioPreview() {
                     alt={`${item.clientName} website`}
                     fill
                     sizes="(max-width: 768px) 100vw, 1280px"
-                    quality={92}
+                    quality={80}
                     className="object-cover object-top"
                   />
                 </div>
@@ -151,6 +151,20 @@ export default function PortfolioPreview() {
                 >
                   {item.clientName}
                 </h3>
+
+                {/* Google rating */}
+                <div className="flex items-center gap-2 -mt-1">
+                  <div className="flex items-center gap-0.5" aria-label={`${item.googleRating} stars on Google`}>
+                    {[...Array(5)].map((_, i) => (
+                      <svg key={i} width="14" height="14" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                        <path d="M9 1.5l2.163 4.38 4.837.703-3.5 3.412.826 4.817L9 12.553l-4.326 2.259.826-4.817L2 6.583l4.837-.703L9 1.5z" fill="#c8a04e" stroke="#c8a04e" strokeWidth="0.5" strokeLinejoin="round" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="font-sans text-xs font-light" style={{ color: '#6a6660' }}>
+                    {item.googleRating.toFixed(1)} on Google
+                  </span>
+                </div>
 
                 {/* Description */}
                 <p className="font-sans text-sm font-light leading-relaxed flex-1" style={{ color: '#6a6660' }}>

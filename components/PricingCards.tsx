@@ -138,11 +138,14 @@ export default function PricingCards({ compact = false }: PricingCardsProps) {
             <div className="absolute top-0 left-0 right-0 h-px bg-gold-gradient" aria-hidden="true" />
           )}
           {tier.highlighted && (
-            <div className="flex justify-center pt-3 -mb-1">
+            <div className="flex flex-col items-center pt-3 -mb-1 gap-1.5">
               <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gold text-bg-primary text-xs font-sans font-semibold tracking-wide">
                 <span className="w-1 h-1 rounded-full bg-bg-primary" aria-hidden="true" />
                 Most Popular
               </span>
+              <p className="font-sans text-xs font-light" style={{ color: '#7a7672' }}>
+                Most chosen by tradesmen
+              </p>
             </div>
           )}
 

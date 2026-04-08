@@ -289,7 +289,7 @@ export default function Hero() {
             </motion.p>
 
             {/* CTA buttons */}
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
+            <motion.div id="hero-cta" variants={itemVariants} className="flex flex-wrap items-center gap-3">
               <motion.button
                 onClick={() => scrollTo('contact')}
                 whileHover={{ scale: 1.03, boxShadow: '0 8px 30px rgba(200,160,78,0.3)' }}
@@ -341,6 +341,18 @@ export default function Hero() {
                 </svg>
                 <span className="font-sans text-sm font-light" style={{ color: '#c8a04e' }}>
                   If your site doesn&apos;t get an enquiry in the first 30 days, you don&apos;t pay monthly until it does.
+                </span>
+              </div>
+              {/* Scarcity line */}
+              <div className="flex items-center gap-2">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#5a5854" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flexShrink: 0 }}>
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                  <line x1="16" y1="2" x2="16" y2="6" />
+                  <line x1="8" y1="2" x2="8" y2="6" />
+                  <line x1="3" y1="10" x2="21" y2="10" />
+                </svg>
+                <span className="font-sans font-light" style={{ fontSize: '13px', color: '#5a5854' }}>
+                  We only take on 5 new clients per month to keep quality high.
                 </span>
               </div>
             </motion.div>

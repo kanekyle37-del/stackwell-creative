@@ -5,14 +5,15 @@ import HowItWorks from '@/components/HowItWorks'
 import PortfolioPreview from '@/components/PortfolioPreview'
 import Testimonials from '@/components/Testimonials'
 import SoundFamiliar from '@/components/SoundFamiliar'
+import PlatformTrustStrip from '@/components/PlatformTrustStrip'
 import PricingCards from '@/components/PricingCards'
 import FinalCTA from '@/components/FinalCTA'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Stackwell Creative — Websites That Win Work',
+  title: 'Stackwell Creative — Websites for UK Tradesmen',
   description:
-    'We build websites for UK tradesmen that turn Google searches into paying customers. Custom sites for roofers, plasterers, painters, joiners and more. From £299.',
+    "Custom websites for roofers, plasterers, decorators and tradesmen. Live in 5 days. First enquiry within 30 days or you don't pay monthly. From £299.",
 }
 
 function PricingPreviewSection() {
@@ -89,6 +90,7 @@ export default function HomePage() {
       <HowItWorks />
       <PortfolioPreview />
       <Testimonials />
+      <PlatformTrustStrip />
       <PricingPreviewSection />
       <FinalCTA />
       <ContactForm />

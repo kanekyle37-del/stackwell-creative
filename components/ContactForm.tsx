@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef } from 'react'
 
@@ -16,8 +16,15 @@ const trades = [
   'Other',
 ]
 
+const tradeHint: Record<string, string> = {
+  'Roofer': "We've built sites for roofers across the UK — check out Warwick Roofing and Hollyfield Roofing in our portfolio.",
+  'Plasterer': "We work with plasterers just like you. Sites built around your work, your reviews, your area.",
+  'Painter & Decorator': "See what we built for Spires Decorating — a gallery-focused site showcasing real work.",
+}
+
 export default function ContactForm() {
   const ref = useRef<HTMLDivElement>(null)
+  const successRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   const [formState, setFormState] = useState<FormState>('idle')
@@ -27,6 +34,15 @@ export default function ContactForm() {
     phone: '',
     trade: '',
   })
+
+  // Scroll success message into view
+  useEffect(() => {
+    if (formState === 'success') {
+      setTimeout(() => {
+        successRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 150)
+    }
+  }, [formState])
 
   const validate = () => {
     const newErrors: Record<string, string> = {}
@@ -140,10 +156,10 @@ export default function ContactForm() {
               ))}
             </div>
 
-            {/* WhatsApp alternative */}
-            <div className="mt-10 pt-8 border-t border-gold/10">
-              <p className="font-sans text-sm text-text-muted mb-3 font-light">
-                Prefer to message directly?
+            {/* WhatsApp + Call alternatives */}
+            <div className="mt-10 pt-8 border-t border-gold/10 space-y-4">
+              <p className="font-sans text-sm text-text-muted font-light">
+                Prefer to contact us directly?
               </p>
               <a
                 href="https://wa.me/447305226059"
@@ -158,6 +174,15 @@ export default function ContactForm() {
                   Message us on WhatsApp
                 </span>
               </a>
+              <div>
+                <p className="font-sans text-sm text-text-dim font-light mb-1">Or call us directly</p>
+                <a
+                  href="tel:07305226059"
+                  className="font-sans text-base font-medium text-gold hover:text-gold-bright transition-colors duration-200 cursor-pointer"
+                >
+                  07305 226059
+                </a>
+              </div>
             </div>
           </motion.div>
 
@@ -170,6 +195,7 @@ export default function ContactForm() {
             <AnimatePresence mode="wait">
               {formState === 'success' ? (
                 <motion.div
+                  ref={successRef}
                   key="success"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -200,6 +226,34 @@ export default function ContactForm() {
                       <path d="M1 11L11 1M11 1H4M11 1v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </a>
+
+                  {/* While you wait */}
+                  <div className="mt-8 pt-6 border-t border-gold/10">
+                    <p className="font-sans text-xs font-medium tracking-widest text-text-dim uppercase mb-4">
+                      While you wait
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                      <a
+                        href="/portfolio"
+                        className="inline-flex items-center gap-2 font-sans text-sm text-text-muted hover:text-gold transition-colors cursor-pointer group"
+                      >
+                        See our recent work
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                          <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </a>
+                      <span className="text-text-dim hidden sm:inline" aria-hidden="true">·</span>
+                      <a
+                        href="/pricing"
+                        className="inline-flex items-center gap-2 font-sans text-sm text-text-muted hover:text-gold transition-colors cursor-pointer group"
+                      >
+                        Check out our pricing
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="group-hover:translate-x-0.5 transition-transform" aria-hidden="true">
+                          <path d="M2 6h8M6 2l4 4-4 4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
                 </motion.div>
               ) : (
                 <motion.div
@@ -330,6 +384,13 @@ export default function ContactForm() {
 
                     <p className="font-sans text-sm text-text-muted text-center font-light">
                       We&apos;ll give you a call within a few hours. No hard sell — just a quick chat about what you need.
+                    </p>
+
+                    {/* Dynamic trade hint */}
+                    <p className="font-sans text-center font-light" style={{ fontSize: '13px', color: '#5a5854', minHeight: '20px' }}>
+                      {formData.trade
+                        ? (tradeHint[formData.trade] ?? "We'll call you back within a few hours.")
+                        : ''}
                     </p>
                   </form>
                 </motion.div>

@@ -8,6 +8,7 @@ export interface PortfolioItem {
   description: string
   tags: string[]
   imagePlaceholder: string
+  googleRating: number
 }
 
 export const portfolioData: PortfolioItem[] = [
@@ -22,6 +23,7 @@ export const portfolioData: PortfolioItem[] = [
       'Built for a family roofing business with 30+ years experience. Live and ranking on Google.',
     tags: ['Roofing', 'Local SEO', 'Lead Generation'],
     imagePlaceholder: '/images/portfolio-warwick-roofing.jpg',
+    googleRating: 5.0,
   },
   {
     id: 'hollyfield-roofing',
@@ -34,6 +36,7 @@ export const portfolioData: PortfolioItem[] = [
       'Emergency roofing specialists. Site went live in 4 days with reviews and click-to-call front and centre.',
     tags: ['Roofing', 'Mobile-First', 'Trust Building'],
     imagePlaceholder: '/images/portfolio-hollyfield-roofing.jpg',
+    googleRating: 5.0,
   },
   {
     id: 'spires-decorating',
@@ -46,6 +49,7 @@ export const portfolioData: PortfolioItem[] = [
       'Specialist decorators with 20+ years in the trade. Gallery-focused site showcasing real work.',
     tags: ['Decorating', 'Portfolio Gallery', 'Reviews'],
     imagePlaceholder: '/images/portfolio-spires-decorating.jpg',
+    googleRating: 5.0,
   },
   // Add more clients here — just copy an object above and update the fields
 ]
