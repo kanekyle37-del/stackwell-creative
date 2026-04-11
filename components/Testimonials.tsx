@@ -7,23 +7,16 @@ const testimonials = [
   {
     id: 'testimonial-1',
     quote:
-      "Stackwell built our site in less than a week and we started getting enquiries within the first month. Best money we've spent on the business.",
-    name: 'James R.',
-    trade: 'Roofer · Manchester',
+      'Kyle came across very professional and not pushy like a lot of website designers I have dealt with in the past. His prices are very reasonable and the after sales are excellent — always answers any questions or updates to my site when needed. Very happy with the service.',
+    name: 'Stephen',
+    trade: 'Warwick Roofing Midlands Ltd',
   },
   {
     id: 'testimonial-2',
     quote:
-      "I was getting maybe one call a week from the internet before. Now I'm turning jobs away. The Google ranking made all the difference.",
-    name: 'Mark T.',
-    trade: 'Plasterer · Belfast',
-  },
-  {
-    id: 'testimonial-3',
-    quote:
-      "Looks proper professional. Customers always comment on it. Kyle sorted everything — I just had to answer the phone.",
-    name: 'Dave H.',
-    trade: 'Painter & Decorator · Birmingham',
+      "Kyle got in touch about a website and, having had bad experiences with other companies before, I wasn't sure at first. He sent a demo over straight away, the price was fair, and from there it was easy. Communication throughout was great and the finished site looks really good. Very happy with how it all turned out.",
+    name: 'Hollyfield Roofing',
+    trade: 'Roofer · Blackburn',
   },
 ]
 
@@ -147,8 +140,8 @@ export default function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Cards grid — 2 cards centred */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {testimonials.map((t, i) => (
             <TestimonialCard key={t.id} testimonial={t} index={i} />
           ))}
