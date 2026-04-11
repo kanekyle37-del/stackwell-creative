@@ -75,11 +75,13 @@ export default function ContactForm() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          access_key: 'YOUR_WEB3FORMS_ACCESS_KEY',
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY ?? '',
+          botcheck: '',
           name: formData.name,
           phone: formData.phone,
           trade: formData.trade,
           subject: `New callback request from ${formData.name} (${formData.trade}) — Stackwell Creative`,
+          from_name: 'Stackwell Creative',
         }),
       })
 

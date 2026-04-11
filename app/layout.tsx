@@ -43,23 +43,14 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: 'https://stackwellcreative.com',
     siteName: 'Stackwell Creative',
-    title: 'Stackwell Creative — Websites for UK Tradesmen',
+    title: 'Stackwell Creative — Websites That Win Work',
     description:
-      'Custom websites for roofers, plasterers, decorators and tradesmen. Live in 5 days. First enquiry within 30 days or you don\'t pay monthly. From £299.',
-    images: [
-      {
-        url: '/images/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Stackwell Creative — Websites for UK Tradesmen',
-      },
-    ],
+      'Professional websites for UK tradesmen. Built to get you found on Google and bring in paying customers.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Stackwell Creative — Websites for UK Tradesmen',
-    description: 'Custom websites for roofers, plasterers and tradesmen. Live in 5 days. From £299.',
-    images: ['/images/og-image.jpg'],
+    title: 'Stackwell Creative — Websites That Win Work',
+    description: 'Professional websites for UK tradesmen. Built to get you found on Google and bring in paying customers.',
   },
   robots: {
     index: true,
@@ -93,6 +84,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${cormorant.variable} ${outfit.variable}`}>
       <head>
+        <link rel="icon" type="image/png" href="/icon.png" />
         <link rel="preconnect" href="https://api.web3forms.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         {/* Preload hero LCP image */}

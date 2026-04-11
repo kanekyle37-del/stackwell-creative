@@ -11,9 +11,9 @@ import FinalCTA from '@/components/FinalCTA'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Stackwell Creative — Websites for UK Tradesmen',
+  title: 'Stackwell Creative — Websites That Win Work',
   description:
-    "Custom websites for roofers, plasterers, decorators and tradesmen. Live in 5 days. First enquiry within 30 days or you don't pay monthly. From £299.",
+    'Professional websites for UK tradesmen. Built to get you found on Google and bring in paying customers.',
 }
 
 function PricingPreviewSection() {
