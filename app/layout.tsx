@@ -1,10 +1,7 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Outfit } from 'next/font/google'
 import './globals.css'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
-import WhatsAppButton from '@/components/WhatsAppButton'
-import FreeQuoteButton from '@/components/FreeQuoteButton'
+import ConditionalShell from '@/app/ConditionalShell'
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -100,11 +97,7 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-bg-primary text-text-primary font-sans antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <FreeQuoteButton />
-        <WhatsAppButton />
+        <ConditionalShell>{children}</ConditionalShell>
       </body>
     </html>
   )
