@@ -49,7 +49,7 @@ export const portfolioData: PortfolioItem[] = [
       'Specialist decorators with 20+ years in the trade. Gallery-focused site showcasing real work.',
     tags: ['Decorating', 'Portfolio Gallery', 'Reviews'],
     imagePlaceholder: '/images/portfolio-spires-decorating.jpg',
-    googleRating: 5.0,
+    googleRating: 4.5,
   },
   // Add more clients here — just copy an object above and update the fields
 ]

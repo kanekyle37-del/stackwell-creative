@@ -4,6 +4,7 @@
 import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { portfolioData } from '@/lib/portfolio-data'
+import StarRating from '@/components/StarRating'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -63,19 +64,6 @@ const testimonials = [
 
 const trades = ['Roofer', 'Plasterer', 'Painter & Decorator', 'Joiner / Carpenter', 'Plumber', 'Landscaper', 'Other']
 
-// ─── Small shared components ──────────────────────────────────────────────────
-
-function Stars() {
-  return (
-    <div className="flex items-center gap-0.5" aria-label="Five stars">
-      {[...Array(5)].map((_, i) => (
-        <svg key={i} width="14" height="14" viewBox="0 0 18 18" fill="#c8a04e" aria-hidden="true">
-          <path d="M9 1.5l2.163 4.38 4.837.703-3.5 3.412.826 4.817L9 12.553l-4.326 2.259.826-4.817L2 6.583l4.837-.703L9 1.5z" />
-        </svg>
-      ))}
-    </div>
-  )
-}
 
 // ─── Contact Form ─────────────────────────────────────────────────────────────
 
@@ -389,7 +377,7 @@ export default function LandingPage() {
                   <h3 className="font-sans text-base font-semibold" style={{ color: '#e8e4dc' }}>{item.clientName}</h3>
                   {/* Stars */}
                   <div className="flex items-center gap-2">
-                    <Stars />
+                    <StarRating rating={item.googleRating} size={14} />
                     <span className="font-sans text-xs font-light" style={{ color: '#6a6660' }}>{item.googleRating.toFixed(1)} on Google</span>
                   </div>
                   <p className="font-sans text-sm font-light leading-relaxed flex-1" style={{ color: '#6a6660' }}>{item.description}</p>
@@ -419,7 +407,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
             {testimonials.map(t => (
               <div key={t.id} className="rounded-xl p-6 flex flex-col gap-4" style={{ background: 'rgba(22,24,34,0.8)', border: '1px solid rgba(200,160,78,0.12)' }}>
-                <Stars />
+                <StarRating rating={5} size={14} />
                 <blockquote className="font-sans text-sm font-light leading-relaxed flex-1" style={{ color: '#8a8680' }}>
                   &ldquo;{t.quote}&rdquo;
                 </blockquote>
