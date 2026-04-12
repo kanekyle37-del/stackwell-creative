@@ -114,7 +114,12 @@ function LPForm() {
       })
       const json = await res.json()
       setState(json.success ? 'success' : 'error')
-      if (json.success) setData({ name: '', phone: '', trade: '' })
+      if (json.success) {
+        setData({ name: '', phone: '', trade: '' })
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          ;(window as any).fbq('track', 'Lead')
+        }
+      }
     } catch { setState('error') }
   }
 
