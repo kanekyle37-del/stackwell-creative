@@ -60,6 +60,30 @@ const testimonials = [
     name: 'Hollyfield Roofing',
     trade: 'Roofer · Blackburn',
   },
+  {
+    id: 't3',
+    quote: "Kyle reached out to me about building a site for my business as I didn't have one and normally I wouldn't bother with these calls but I'm so glad I gave him a chance. His responses were informative and prompt, the turnaround on the site was fast and even though I went back to him with tweaks and changes a few times nothing was too much hassle for him. He's gone above my expectations, the colour scheme, how professional it all looks, the details. I'd 100% recommend him to anyone thinking of getting a site made.",
+    name: 'Jai',
+    trade: 'Sapphire Spray Coatings · Mansfield',
+  },
+]
+
+// LP-only: extends the shared portfolio with the Sapphire Spray Coatings card
+const lpPortfolioItems = [
+  ...portfolioData,
+  {
+    id: 'sapphire-spray-coatings',
+    clientName: 'Sapphire Spray Coatings',
+    niche: 'Painter & Decorator',
+    meta: 'Painter & Decorator · Mansfield',
+    location: 'Mansfield, England',
+    url: 'https://sapphirespraycoatings.co.uk',
+    description:
+      'Spray coating specialists in Mansfield. Professional site showcasing services and real Google reviews.',
+    tags: ['Decorating', 'Spray Coatings', 'Reviews'],
+    imagePlaceholder: '/images/portfolio-sapphire-spray-coatings.jpg',
+    googleRating: 5.0,
+  },
 ]
 
 const trades = ['Roofer', 'Plasterer', 'Painter & Decorator', 'Joiner / Carpenter', 'Plumber', 'Landscaper', 'Other']
@@ -355,8 +379,8 @@ export default function LandingPage() {
           <p className="font-sans text-base font-light text-center mb-10" style={{ color: '#6a6660' }}>
             Real sites for real tradesmen. Click through to see them live.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {portfolioData.map(item => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {lpPortfolioItems.map(item => (
               <div
                 key={item.id}
                 className="rounded-xl overflow-hidden flex flex-col"
@@ -409,7 +433,7 @@ export default function LandingPage() {
           <h2 className="font-sans text-3xl sm:text-4xl font-semibold text-center mb-10" style={{ color: '#e8e4dc' }}>
             What tradesmen say
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
             {testimonials.map(t => (
               <div key={t.id} className="rounded-xl p-6 flex flex-col gap-4" style={{ background: 'rgba(22,24,34,0.8)', border: '1px solid rgba(200,160,78,0.12)' }}>
                 <StarRating rating={5} size={14} />
