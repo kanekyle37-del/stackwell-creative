@@ -11,7 +11,7 @@ export default function PortfolioPreview() {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: 0.15 })
 
-  const featured = portfolioData.slice(0, 3)
+  const featured = portfolioData.slice(0, 4)
 
   return (
     <section
@@ -68,7 +68,7 @@ export default function PortfolioPreview() {
         </motion.div>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {featured.map((item, i) => (
             <motion.article
               key={item.id}

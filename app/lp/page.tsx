@@ -68,24 +68,6 @@ const testimonials = [
   },
 ]
 
-// LP-only: extends the shared portfolio with the Sapphire Spray Coatings card
-const lpPortfolioItems = [
-  ...portfolioData,
-  {
-    id: 'sapphire-spray-coatings',
-    clientName: 'Sapphire Spray Coatings',
-    niche: 'Painter & Decorator',
-    meta: 'Painter & Decorator · Mansfield',
-    location: 'Mansfield, England',
-    url: 'https://sapphirespraycoatings.co.uk',
-    description:
-      'Spray coating specialists in Mansfield. Professional site showcasing services and real Google reviews.',
-    tags: ['Decorating', 'Spray Coatings', 'Reviews'],
-    imagePlaceholder: '/images/portfolio-sapphire-spray-coatings.jpg',
-    googleRating: 5.0,
-  },
-]
-
 const trades = ['Roofer', 'Plasterer', 'Painter & Decorator', 'Joiner / Carpenter', 'Plumber', 'Landscaper', 'Other']
 
 
@@ -380,7 +362,7 @@ export default function LandingPage() {
             Real sites for real tradesmen. Click through to see them live.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {lpPortfolioItems.map(item => (
+            {portfolioData.map(item => (
               <div
                 key={item.id}
                 className="rounded-xl overflow-hidden flex flex-col"

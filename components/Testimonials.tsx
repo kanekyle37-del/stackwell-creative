@@ -18,6 +18,13 @@ const testimonials = [
     name: 'Hollyfield Roofing',
     trade: 'Roofer · Blackburn',
   },
+  {
+    id: 'testimonial-3',
+    quote:
+      "Kyle reached out to me about building a site for my business as I didn't have one and normally I wouldn't bother with these calls but I'm so glad I gave him a chance. His responses were informative and prompt, the turnaround on the site was fast and even though I went back to him with tweaks and changes a few times nothing was too much hassle for him. He's gone above my expectations, the colour scheme, how professional it all looks, the details. I'd 100% recommend him to anyone thinking of getting a site made.",
+    name: 'Jai',
+    trade: 'Sapphire Spray Coatings · Mansfield',
+  },
 ]
 
 function StarRow() {
@@ -140,8 +147,8 @@ export default function Testimonials() {
           </p>
         </motion.div>
 
-        {/* Cards grid — 2 cards centred */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {/* Cards grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {testimonials.map((t, i) => (
             <TestimonialCard key={t.id} testimonial={t} index={i} />
           ))}
