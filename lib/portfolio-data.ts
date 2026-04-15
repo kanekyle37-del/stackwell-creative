@@ -51,5 +51,18 @@ export const portfolioData: PortfolioItem[] = [
     imagePlaceholder: '/images/portfolio-hollyfield-roofing.jpg',
     googleRating: 5.0,
   },
+  {
+    id: 'sapphire-spray-coatings',
+    clientName: 'Sapphire Spray Coatings',
+    niche: 'Painter & Decorator',
+    meta: 'Painter & Decorator · Mansfield',
+    location: 'Mansfield, England',
+    url: 'https://sapphirespraycoatings.co.uk',
+    description:
+      'Spray coating specialists in Mansfield. Professional site showcasing services and real Google reviews.',
+    tags: ['Decorating', 'Spray Coatings', 'Reviews'],
+    imagePlaceholder: '/images/portfolio-sapphire-spray-coatings.jpg',
+    googleRating: 5.0,
+  },
   // Add more clients here — just copy an object above and update the fields
 ]
