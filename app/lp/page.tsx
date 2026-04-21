@@ -79,6 +79,7 @@ function LPForm() {
   const [state, setState] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [data, setData] = useState({ name: '', phone: '', trade: '' })
+  const [submittedName, setSubmittedName] = useState('')
 
   useEffect(() => {
     if (state === 'success') {
@@ -122,6 +123,7 @@ function LPForm() {
       const json = await res.json()
       setState(json.success ? 'success' : 'error')
       if (json.success) {
+        setSubmittedName(data.name.split(' ')[0])
         setData({ name: '', phone: '', trade: '' })
         if (typeof window !== 'undefined' && (window as any).fbq) {
           ;(window as any).fbq('track', 'Lead')
@@ -136,9 +138,9 @@ function LPForm() {
         <div className="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-5" style={{ background: 'rgba(74,186,122,0.1)', border: '1px solid rgba(74,186,122,0.3)' }}>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4aba7a" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
         </div>
-        <h3 className="font-sans text-2xl font-semibold text-text-primary mb-3">Thanks — we'll call you back within a few hours.</h3>
+        <h3 className="font-sans text-2xl font-semibold mb-3" style={{ color: '#e8e4dc' }}>Thanks{submittedName ? `, ${submittedName}` : ''} — Kyle will call you back within the hour.</h3>
         <p className="font-sans text-sm font-light leading-relaxed" style={{ color: '#6a6660' }}>
-          If you need us sooner, message us directly on WhatsApp.
+          Keep an eye on your phone. If you need us sooner, message us directly on WhatsApp.
         </p>
         <a
           href="https://wa.me/447305226059"
@@ -218,7 +220,7 @@ function LPForm() {
             <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
             Sending…
           </>
-        ) : 'Get My Free Quote'}
+        ) : 'Get Your Free Website Preview'}
       </button>
 
       <p className="font-sans text-sm text-center font-light" style={{ color: '#5a5854' }}>
@@ -244,7 +246,7 @@ export default function LandingPage() {
     <div className="min-h-screen font-sans" style={{ background: '#0f1117', color: '#e8e4dc' }}>
 
       {/* ── TOP BAR ──────────────────────────────────────────────────────── */}
-      <header style={{ background: '#161822', borderBottom: '1px solid rgba(200,160,78,0.12)' }}>
+      <header style={{ background: '#161822', borderBottom: '1px solid rgba(200,160,78,0.12)', position: 'sticky', top: 0, zIndex: 50 }}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
           {/* Logo — text only */}
           <div className="flex flex-col leading-none">
@@ -282,7 +284,7 @@ export default function LandingPage() {
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
           {/* Pre-label */}
           <p className="font-sans text-xs font-medium tracking-widest uppercase mb-5" style={{ color: 'rgba(200,160,78,0.7)' }}>
-            UK Tradesmen Only · Live in 5 Days · From £299
+            🔥 Only taking 3 new clients this month · Live in 5 Days · From £299
           </p>
 
           {/* Headline */}
@@ -305,7 +307,7 @@ export default function LandingPage() {
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded font-sans font-semibold text-base tracking-wide cursor-pointer transition-opacity duration-200 hover:opacity-90"
               style={{ background: '#c8a04e', color: '#0f1117', minWidth: '220px' }}
             >
-              Get My Free Quote
+              Get Your Free Website Preview
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
             <a
@@ -351,6 +353,26 @@ export default function LandingPage() {
           <p className="font-sans text-base text-center mt-8 font-medium" style={{ color: '#c8a04e' }}>
             We fix this in less than a week.
           </p>
+        </div>
+      </section>
+
+      {/* ── MID-PAGE CTA ─────────────────────────────────────────────────── */}
+      <section className="py-10" style={{ background: '#0f1117' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <div className="rounded-xl px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-6" style={{ background: 'rgba(200,160,78,0.06)', border: '1px solid rgba(200,160,78,0.2)' }}>
+            <div className="text-left">
+              <p className="font-sans font-semibold text-lg" style={{ color: '#e8e4dc' }}>Sound like you? We can fix this in 5 days.</p>
+              <p className="font-sans font-light text-sm mt-1" style={{ color: '#6a6660' }}>Leave your number and we'll call you back — no commitment, no pressure.</p>
+            </div>
+            <button
+              onClick={scrollToForm}
+              className="flex-shrink-0 flex items-center gap-2 px-7 py-3.5 rounded font-sans font-semibold text-sm tracking-wide cursor-pointer transition-opacity duration-200 hover:opacity-90 whitespace-nowrap"
+              style={{ background: '#c8a04e', color: '#0f1117' }}
+            >
+              Get Your Free Preview
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -470,6 +492,15 @@ export default function LandingPage() {
             <p className="font-sans text-sm font-light mt-3" style={{ color: '#6a6660' }}>
               No commitment. No pressure. Just a quick 10-minute chat.
             </p>
+          </div>
+
+          {/* Guarantee box */}
+          <div className="rounded-xl px-6 py-5 mb-6 flex items-start gap-4" style={{ background: 'rgba(200,160,78,0.05)', border: '1px solid rgba(200,160,78,0.25)' }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="flex-shrink-0 mt-0.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+            <div>
+              <p className="font-sans font-semibold text-sm" style={{ color: '#c8a04e' }}>30-Day Enquiry Guarantee</p>
+              <p className="font-sans font-light text-sm mt-1 leading-relaxed" style={{ color: '#6a6660' }}>If you don&apos;t get enquiries in your first 30 days, you pay no monthly fee. Simple.</p>
+            </div>
           </div>
 
           <LPForm />

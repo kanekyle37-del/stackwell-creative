@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { FloatingPaths } from '@/components/ui/background-paths'
 import ElegantShapesBg from '@/components/ui/elegant-shapes'
 
 // ─── Animation variants ───────────────────────────────────────────────────
@@ -199,10 +198,6 @@ export default function Hero() {
     >
       {/* ── Backgrounds ──────────────────────────────────────────────── */}
 
-      {/* Animated floating paths */}
-      <FloatingPaths position={1} />
-      <FloatingPaths position={-1} />
-
       {/* Floating gold ellipses */}
       <ElegantShapesBg />
 
@@ -307,7 +302,7 @@ export default function Hero() {
                 onMouseLeave={e => { e.currentTarget.style.background = '#c8a04e' }}
                 aria-label="Get a free quote — scroll to contact form"
               >
-                Get a Free Quote
+                Get Your Free Website Preview
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
                   <path d="M3 7.5h9M8.5 4l3.5 3.5L8.5 11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>

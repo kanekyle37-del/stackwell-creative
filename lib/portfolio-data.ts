@@ -20,7 +20,7 @@ export const portfolioData: PortfolioItem[] = [
     location: 'Northampton, England',
     url: 'https://spiresdecorating.com',
     description:
-      'Specialist decorators with 20+ years in the trade. Gallery-focused site showcasing real work.',
+      'Ranking on Google within weeks of going live. Showcases 20+ years of real work and pulls in local enquiries.',
     tags: ['Decorating', 'Portfolio Gallery', 'Reviews'],
     imagePlaceholder: '/images/portfolio-spires-decorating.jpg',
     googleRating: 4.5,
@@ -33,7 +33,7 @@ export const portfolioData: PortfolioItem[] = [
     location: 'Warwick, England',
     url: 'https://warwickroofingmidlandsltd.com/',
     description:
-      'Built for a family roofing business with 30+ years experience. Live and ranking on Google.',
+      'Live and ranking on Google. Family roofing business with 30+ years experience now getting found by customers searching locally.',
     tags: ['Roofing', 'Local SEO', 'Lead Generation'],
     imagePlaceholder: '/images/portfolio-warwick-roofing.jpg',
     googleRating: 5.0,
@@ -46,7 +46,7 @@ export const portfolioData: PortfolioItem[] = [
     location: 'Blackburn, England',
     url: 'https://hollyfieldroofings.com',
     description:
-      'Emergency roofing specialists. Site went live in 4 days with reviews and click-to-call front and centre.',
+      'Live in 4 days. Emergency roofers now showing up on Google when customers need them most — reviews and click-to-call front and centre.',
     tags: ['Roofing', 'Mobile-First', 'Trust Building'],
     imagePlaceholder: '/images/portfolio-hollyfield-roofing.jpg',
     googleRating: 5.0,
@@ -59,7 +59,7 @@ export const portfolioData: PortfolioItem[] = [
     location: 'Mansfield, England',
     url: 'https://sapphirespraycoatings.co.uk',
     description:
-      'Spray coating specialists in Mansfield. Professional site showcasing services and real Google reviews.',
+      'Spray coating specialists in Mansfield now getting found online. Professional site with real Google reviews converting visitors into enquiries.',
     tags: ['Decorating', 'Spray Coatings', 'Reviews'],
     imagePlaceholder: '/images/portfolio-sapphire-spray-coatings.jpg',
     googleRating: 5.0,

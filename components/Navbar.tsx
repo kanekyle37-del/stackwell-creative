@@ -214,7 +214,7 @@ export default function Navbar() {
                   }}
                   className="w-full py-4 bg-gold text-bg-primary font-sans font-medium text-base tracking-wide rounded hover:bg-gold-bright transition-all duration-200 cursor-pointer"
                 >
-                  Get a Free Quote
+                  Get Your Free Website Preview
                 </button>
               </motion.div>
             </nav>
