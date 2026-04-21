@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "stackwell-creative (Next.js dev)",
-      "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev"],
-      "port": 3000
+      "name": "ad-frames",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "4400", "ad-frames"],
+      "port": 4400
     }
   ]
 }

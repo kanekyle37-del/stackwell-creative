@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { FloatingPaths } from '@/components/ui/background-paths'
+import ElegantShapesBg from '@/components/ui/elegant-shapes'
 
 // ─── Animation variants ───────────────────────────────────────────────────
 
@@ -198,9 +199,12 @@ export default function Hero() {
     >
       {/* ── Backgrounds ──────────────────────────────────────────────── */}
 
-      {/* Animated floating paths — replaces static grid */}
+      {/* Animated floating paths */}
       <FloatingPaths position={1} />
       <FloatingPaths position={-1} />
+
+      {/* Floating gold ellipses */}
+      <ElegantShapesBg />
 
       {/* Ambient orb — top left */}
       <div

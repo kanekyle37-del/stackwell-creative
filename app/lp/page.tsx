@@ -5,6 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 import Image from 'next/image'
 import { portfolioData } from '@/lib/portfolio-data'
 import StarRating from '@/components/StarRating'
+import ElegantShapesBg from '@/components/ui/elegant-shapes'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -277,7 +278,8 @@ export default function LandingPage() {
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <section className="relative py-16 sm:py-24 overflow-hidden" style={{ background: 'radial-gradient(ellipse 80% 50% at 50% -10%, rgba(200,160,78,0.1) 0%, transparent 60%)' }}>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+        <ElegantShapesBg />
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
           {/* Pre-label */}
           <p className="font-sans text-xs font-medium tracking-widest uppercase mb-5" style={{ color: 'rgba(200,160,78,0.7)' }}>
             UK Tradesmen Only · Live in 5 Days · From £299

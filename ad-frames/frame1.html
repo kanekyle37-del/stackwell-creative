@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Frame 1 - The Hook</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;800;900&family=Barlow:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    background: #0D0D0D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    overflow: hidden;
+  }
+
+  .top-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 5px;
+    color: #C9A035;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .google-mock {
+    width: 680px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+  }
+
+  .browser-bar {
+    background: #f1f3f4;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #febc2e; }
+  .dot.g { background: #28c840; }
+
+  .url-bar {
+    flex: 1;
+    background: #fff;
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: #555;
+    margin-left: 8px;
+  }
+
+  .search-area {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .google-logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 10px;
+  }
+  .g-blue { color: #4285F4; }
+  .g-red { color: #EA4335; }
+  .g-yellow { color: #FBBC04; }
+  .g-green { color: #34A853; }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    padding: 8px 16px;
+    gap: 10px;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+  }
+
+  .search-icon { color: #9aa0a6; font-size: 14px; }
+
+  .search-text {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: #202124;
+  }
+
+  .results {
+    padding: 8px 20px 16px;
+  }
+
+  .result-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .result-item:last-child { border-bottom: none; }
+
+  .result-url {
+    font-family: 'Barlow', sans-serif;
+    font-size: 10px;
+    color: #006621;
+    margin-bottom: 2px;
+  }
+
+  .result-title {
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    color: #1a0dab;
+    font-weight: 600;
+    margin-bottom: 2px;
+    text-decoration: underline;
+  }
+
+  .result-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 11px;
+    color: #545454;
+    line-height: 1.4;
+  }
+
+  .stars { color: #f4a822; font-size: 10px; }
+
+  .warning-box {
+    margin: 24px 0 0;
+    background: #1a0000;
+    border: 2px solid #CC0000;
+    border-radius: 8px;
+    padding: 16px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 680px;
+  }
+
+  .warning-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+  }
+
+  .warning-text {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .warning-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #FF4444;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+
+  .warning-sub {
+    font-size: 15px;
+    font-weight: 400;
+    color: #ffaaaa;
+    letter-spacing: 0.5px;
+  }
+
+  .bottom-label {
+    margin-top: 28px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #888;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="top-label">Right now in your area...</div>
+
+  <div class="google-mock">
+    <div class="browser-bar">
+      <div class="dot r"></div>
+      <div class="dot y"></div>
+      <div class="dot g"></div>
+      <div class="url-bar">google.com/search?q=painter+decorator+near+me</div>
+    </div>
+    <div class="search-area">
+      <div class="google-logo">
+        <span class="g-blue">G</span><span class="g-red">o</span><span class="g-yellow">o</span><span class="g-blue">g</span><span class="g-green">l</span><span class="g-red">e</span>
+      </div>
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <span class="search-text">painter decorator near me</span>
+      </div>
+    </div>
+    <div class="results">
+      <div class="result-item">
+        <div class="result-url">bristoldecoratingpros.co.uk</div>
+        <div class="result-title">Bristol Decorating Pros — Trusted Local Painters</div>
+        <div class="stars">★★★★★</div>
+        <div class="result-desc">Professional painting & decorating across Bristol. Free quotes, fully insured. Book your slot online — filling fast this month.</div>
+      </div>
+      <div class="result-item">
+        <div class="result-url">decopro.co.uk</div>
+        <div class="result-title">DecoPro Ltd — Interior & Exterior Decorating</div>
+        <div class="stars">★★★★☆</div>
+        <div class="result-desc">16 years' experience. Domestic & commercial. Competitive rates. Serving your area — get an instant online quote.</div>
+      </div>
+      <div class="result-item">
+        <div class="result-url">premierpaintingco.co.uk</div>
+        <div class="result-title">Premier Painting Co — 5-Star Local Decorators</div>
+        <div class="stars">★★★★★</div>
+        <div class="result-desc">Wallpaper hanging, feature walls, full redecs. 5-star rated. Coverage across the region — call or book online today.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="warning-box">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-text">
+      <div class="warning-title">Your business doesn't appear here</div>
+      <div class="warning-sub">Customers searching right now cannot find you</div>
+    </div>
+  </div>
+
+  <div class="bottom-label">While you're on Facebook — they're getting the jobs</div>
+</body>
+</html>
