@@ -223,8 +223,11 @@ function LPForm() {
         ) : 'Get Your Free Website Preview'}
       </button>
 
+      <p className="font-sans text-xs text-center font-light mt-1" style={{ color: '#5a5854' }}>
+        ⚡ Only 3 spots remaining this month
+      </p>
       <p className="font-sans text-sm text-center font-light" style={{ color: '#5a5854' }}>
-        We&apos;ll call you back within a few hours. No hard sell.
+        We&apos;ll call you back within the hour. No hard sell.
       </p>
     </form>
   )
@@ -461,6 +464,59 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* ── FAQ ──────────────────────────────────────────────────────────── */}
+      <section className="py-16 sm:py-20" style={{ background: '#111320' }}>
+        <div className="max-w-3xl mx-auto px-4 sm:px-6">
+          <h2 className="font-sans text-3xl sm:text-4xl font-semibold text-center mb-10" style={{ color: '#e8e4dc' }}>
+            Common questions
+          </h2>
+          <div className="space-y-4">
+            {[
+              {
+                q: 'How does it work?',
+                a: "Leave your number and Kyle will call you back within the hour. He'll find out what you need, send you a free demo of your site within 24 hours, and if you're happy — you're live within 5 days. No payment until you've seen and approved the demo.",
+              },
+              {
+                q: "What if I don't like what you build?",
+                a: "You'll see a free demo before paying a single penny. If it's not right, we'll adjust it. If you still don't want to go ahead, no hard feelings — there's no obligation and no cost.",
+              },
+              {
+                q: 'Do I own the website?',
+                a: "You own all the content and your domain name. We host and maintain it for £35/month — and you can cancel anytime with no penalties, no notice period, and no awkward conversations.",
+              },
+              {
+                q: "What if I don't get any enquiries?",
+                a: "That's exactly what the 30-day guarantee is for. If you don't receive a single enquiry in your first 30 days live, you pay no monthly fee until you do. Simple as that.",
+              },
+              {
+                q: "What's included in the £35/month?",
+                a: "Hosting, maintenance, security updates, and any small tweaks you need along the way. We keep it running so you can focus on the work.",
+              },
+              {
+                q: 'How long does it actually take?',
+                a: '5 working days from the moment you give us the go-ahead. Most clients are live in 3–4 days.',
+              },
+            ].map((item, i) => (
+              <details
+                key={i}
+                className="rounded-xl group"
+                style={{ background: 'rgba(22,24,34,0.8)', border: '1px solid rgba(200,160,78,0.1)' }}
+              >
+                <summary className="flex items-center justify-between px-6 py-5 cursor-pointer list-none gap-4">
+                  <span className="font-sans font-medium text-base" style={{ color: '#e8e4dc' }}>{item.q}</span>
+                  <svg className="flex-shrink-0 transition-transform duration-200 group-open:rotate-45" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M8 2v12M2 8h12" stroke="#c8a04e" strokeWidth="1.5" strokeLinecap="round" />
+                  </svg>
+                </summary>
+                <div className="px-6 pb-5">
+                  <p className="font-sans text-sm font-light leading-relaxed" style={{ color: '#6a6660' }}>{item.a}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── PRICING SNAPSHOT ─────────────────────────────────────────────── */}
       <section className="py-12" style={{ background: 'rgba(200,160,78,0.03)', borderTop: '1px solid rgba(200,160,78,0.08)', borderBottom: '1px solid rgba(200,160,78,0.08)' }}>
         <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
@@ -482,7 +538,7 @@ export default function LandingPage() {
         <div className="max-w-xl mx-auto px-4 sm:px-6">
           {/* Heading */}
           <div className="text-center mb-8">
-            <p className="font-sans text-xs font-medium tracking-widest uppercase mb-3" style={{ color: 'rgba(200,160,78,0.7)' }}>Get Started</p>
+            <p className="font-sans text-xs font-medium tracking-widest uppercase mb-3" style={{ color: 'rgba(200,160,78,0.7)' }}>Free Website Preview</p>
             <h2 className="font-sans text-3xl sm:text-4xl font-semibold leading-tight" style={{ color: '#e8e4dc' }}>
               Leave your number.{' '}
               <span style={{ background: 'linear-gradient(135deg, #9a7a3a 0%, #c8a04e 50%, #e8c96e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontStyle: 'italic' }}>
