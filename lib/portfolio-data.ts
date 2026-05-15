@@ -59,10 +59,22 @@ export const portfolioData: PortfolioItem[] = [
     location: 'Mansfield, England',
     url: 'https://sapphirespraycoatings.co.uk',
     description:
-      'Spray coating specialists in Mansfield now getting found online. Professional site with real Google reviews converting visitors into enquiries.',
+      'Spray coating specialists in Mansfield now getting found online. 3 new enquiries in the first 30 days of going live.',
     tags: ['Decorating', 'Spray Coatings', 'Reviews'],
     imagePlaceholder: '/images/portfolio-sapphire-spray-coatings.jpg',
     googleRating: 5.0,
   },
-  // Add more clients here — just copy an object above and update the fields
+  {
+    id: 'cb-joinery',
+    clientName: 'C&B Joinery',
+    niche: 'Joiner',
+    meta: 'Joiner · Barrow-in-Furness',
+    location: 'Barrow-in-Furness, England',
+    url: 'https://cbjoineryltd.com',
+    description:
+      'Brand new online presence for a joinery business with zero previous web presence. Live within the week.',
+    tags: ['Joinery', 'New Online Presence', 'Lead Generation'],
+    imagePlaceholder: '/images/portfolio-cb-joinery.jpg',
+    googleRating: 5.0,
+  },
 ]

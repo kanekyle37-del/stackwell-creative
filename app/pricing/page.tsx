@@ -43,7 +43,7 @@ export default function PricingPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="font-sans text-text-muted text-lg max-w-xl mx-auto leading-relaxed font-light"
           >
-            No surprises. No hidden fees. You know exactly what you're getting and what you're paying from day one.
+            No hidden fees. No surprises. One job won from your site pays for the first year. Most clients see their first enquiry within the first week.
           </motion.p>
         </div>
       </section>
@@ -53,10 +53,30 @@ export default function PricingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <PricingCards compact={false} />
 
+          {/* Guarantee block */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+            className="mt-8 rounded-xl px-8 py-8 text-center w-full"
+            style={{ border: '1px solid rgba(200,160,78,0.35)', background: '#0a0a0f' }}
+          >
+            <div className="flex items-center justify-center gap-2.5 mb-3">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+              </svg>
+              <span className="font-sans text-sm font-semibold tracking-widest uppercase" style={{ color: '#c8a04e' }}>The 30-Day Guarantee</span>
+            </div>
+            <p className="font-sans text-sm text-text-muted font-light leading-relaxed max-w-xl mx-auto">
+              If your site doesn&apos;t generate an enquiry in the first 30 days, we pause your monthly until it does.
+              We only take on 5 new clients a month — so when we take you on, we&apos;re committed to making it work.
+            </p>
+          </motion.div>
+
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
             className="text-center font-sans text-sm text-text-dim mt-8"
           >
             Not sure which plan is right?{' '}
@@ -67,7 +87,7 @@ export default function PricingPage() {
               }}
               className="text-gold hover:text-gold-bright transition-colors cursor-pointer underline underline-offset-2"
             >
-              Get in touch and we'll help you choose.
+              Get in touch and we&apos;ll help you choose.
             </button>
           </motion.p>
         </div>

@@ -52,6 +52,44 @@ function CountUp({ target, isInView }: { target: number; isInView: boolean }) {
 
 const items = [
   {
+    id: 'clients',
+    display: (isInView: boolean) => (
+      <span
+        className="font-sans font-semibold leading-none"
+        style={{
+          fontSize: 'clamp(3rem, 5vw, 3.75rem)',
+          background: 'linear-gradient(135deg, #9a7a3a, #c8a04e, #e8c96e)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}
+      >
+        <CountUp target={7} isInView={isInView} />
+      </span>
+    ),
+    label: 'Live trade businesses',
+    sub: 'Real sites, real enquiries',
+  },
+  {
+    id: 'days',
+    display: (isInView: boolean) => (
+      <span
+        className="font-sans font-semibold leading-none"
+        style={{
+          fontSize: 'clamp(3rem, 5vw, 3.75rem)',
+          background: 'linear-gradient(135deg, #9a7a3a, #c8a04e, #e8c96e)',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+          backgroundClip: 'text',
+        }}
+      >
+        <CountUp target={5} isInView={isInView} /> Days
+      </span>
+    ),
+    label: 'First call to launch',
+    sub: 'Not weeks. Days.',
+  },
+  {
     id: 'star',
     display: (isInView: boolean) => (
       <div className="flex flex-col items-center gap-2">
@@ -71,30 +109,11 @@ const items = [
         <StarRow />
       </div>
     ),
-    label: 'Rated',
-    sub: 'By every client',
+    label: 'Rated by every client',
+    sub: 'No exceptions',
   },
   {
-    id: 'days',
-    display: (isInView: boolean) => (
-      <span
-        className="font-sans font-semibold leading-none"
-        style={{
-          fontSize: 'clamp(3rem, 5vw, 3.75rem)',
-          background: 'linear-gradient(135deg, #9a7a3a, #c8a04e, #e8c96e)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          backgroundClip: 'text',
-        }}
-      >
-        <CountUp target={5} isInView={isInView} /> Days
-      </span>
-    ),
-    label: 'Live in',
-    sub: 'From first call to launch',
-  },
-  {
-    id: 'uk',
+    id: 'guarantee',
     display: (_isInView: boolean) => (
       <span
         className="font-sans font-semibold leading-none"
@@ -106,11 +125,11 @@ const items = [
           backgroundClip: 'text',
         }}
       >
-        UK Only
+        30 Days
       </span>
     ),
-    label: 'Trades',
-    sub: 'We know your industry',
+    label: 'Enquiry guarantee',
+    sub: 'Or you don\'t pay monthly',
   },
 ]
 
@@ -145,7 +164,7 @@ export default function Stats() {
       />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-gold/10">
+        <div className="grid grid-cols-2 lg:grid-cols-4 divide-y lg:divide-y-0 divide-x divide-gold/10">
           {items.map((item, i) => (
             <motion.div
               key={item.id}

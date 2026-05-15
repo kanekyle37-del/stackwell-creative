@@ -285,8 +285,9 @@ export default function Hero() {
               className="font-sans font-light leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.8vw, 1.125rem)', color: '#8a8680', maxWidth: '480px' }}
             >
-              When someone in your area needs a tradesman, your name shows up first.
-              They see your reviews, check your prices, and call you — not your competitor.
+              When someone in your area searches for your trade, your name shows up first.
+              They see your reviews, read about your work, and call you — not your competitor.
+              We build the system that makes that happen. Live in 5 days.
             </motion.p>
 
             {/* CTA buttons */}
@@ -326,7 +327,7 @@ export default function Hero() {
             {/* Trust strip */}
             <motion.div variants={itemVariants} className="flex flex-col gap-3">
               <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
-                {['Live in 5 days', 'No contracts', 'Cancel anytime'].map(item => (
+                {['Live in 5 days', '30-day enquiry guarantee', 'Fills your diary, not just your inbox'].map(item => (
                   <span key={item} className="flex items-center gap-1.5 font-sans text-xs font-light" style={{ color: '#5a5854' }}>
                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                       <path d="M2 6l2.5 2.5L10 3.5" stroke="#c8a04e" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
@@ -341,7 +342,7 @@ export default function Hero() {
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
                 <span className="font-sans text-sm font-light" style={{ color: '#c8a04e' }}>
-                  If your site doesn&apos;t get an enquiry in the first 30 days, you don&apos;t pay monthly until it does.
+                  If your site doesn&apos;t generate an enquiry in the first 30 days, you don&apos;t pay monthly until it does.
                 </span>
               </div>
               {/* Scarcity line */}

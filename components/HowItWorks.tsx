@@ -9,19 +9,19 @@ const steps = [
     icon: Phone,
     title: 'Book a Call',
     description:
-      'Quick 10-minute phone call. Tell us what you do, where you work, and what jobs you want more of. That\'s it. No jargon, no sales pitch.',
+      'A quick 10-minute call. Tell us your trade, your area, and the kind of jobs you want more of. No jargon, no commitment.',
   },
   {
     icon: Monitor,
     title: 'We Build It',
     description:
-      'We build your site around your trade, your patch, and your real Google reviews. Not a template. Custom-built and live within 5 days. You don\'t have to write a single word.',
+      'We build your site around your trade, your patch, and your real Google reviews. Custom-built around you. Live within 5 days. You don\'t write a single word.',
   },
   {
     icon: Users,
     title: 'Start Getting Leads',
     description:
-      "Your site goes live. When someone Googles 'roofer near me' or 'plasterer in [your town]', your name comes up. They see your work, read your reviews, and ring you. You just answer the phone.",
+      "Your site goes live. When someone Googles your trade in your area, your name comes up. They see your reviews, check your work, and call you. You just answer the phone.",
   },
 ]
 

@@ -25,6 +25,13 @@ const testimonials = [
     name: 'Jai',
     trade: 'Sapphire Spray Coatings · Mansfield',
   },
+  {
+    id: 'testimonial-4',
+    quote:
+      "Kyle recently reached out to us as we were without a website. There was no hard selling and he was respectful that we are running a business so can't always talk. Very clear instructions as to what the process required — literally needed minutes of my time. We had a drafted website the same day, any amendments were made straight away. Very quick responses to any questions we had. Kyle is a genuine guy who's happy to help. Many thanks.",
+    name: 'Brad',
+    trade: 'C&B Joinery · Barrow-in-Furness',
+  },
 ]
 
 function StarRow() {
@@ -148,7 +155,7 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {testimonials.map((t, i) => (
             <TestimonialCard key={t.id} testimonial={t} index={i} />
           ))}

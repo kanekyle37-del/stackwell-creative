@@ -78,7 +78,7 @@ export default function FinalCTA() {
           className="font-sans text-text-muted text-lg mb-10 max-w-xl mx-auto leading-relaxed font-light"
         >
           Right now, someone in your area is Googling your trade. If you don&apos;t
-          show up, your competitor does — and he gets the job.
+          show up, your competitor does — and he gets the job. We fix that in 5 days.
         </motion.p>
 
         <motion.div

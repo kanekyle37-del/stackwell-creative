@@ -36,32 +36,32 @@ function PricingPreviewSection() {
             id="pricing-preview-heading"
             className="font-sans text-4xl sm:text-5xl font-semibold text-text-primary"
           >
-            Straightforward pricing
+            One investment. A system that fills your diary.
           </h2>
           <p className="font-sans text-text-muted mt-4 max-w-lg mx-auto text-base leading-relaxed font-light">
-            No hidden fees. No surprises. You know exactly what you&apos;re paying.
+            No hidden fees. No surprises. One job won from your site pays for the first year.
           </p>
           <p className="font-sans text-sm text-text-dim mt-3 max-w-md mx-auto font-light">
-            One job covers your website for the year. Most of our clients get their first enquiry within the first week.
+            Most clients see their first enquiry within the first week.
           </p>
         </div>
 
         <PricingCards compact={true} />
 
-        {/* Guarantee box */}
+        {/* Guarantee block */}
         <div
-          className="mt-8 rounded-xl px-6 py-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-          style={{ border: '1px solid rgba(200,160,78,0.3)', background: 'rgba(200,160,78,0.03)' }}
+          className="mt-8 rounded-xl px-8 py-8 text-center w-full"
+          style={{ border: '1px solid rgba(200,160,78,0.35)', background: '#0a0a0f' }}
         >
-          <div className="flex items-center gap-3 flex-shrink-0">
+          <div className="flex items-center justify-center gap-2.5 mb-3">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
-            <span className="font-sans text-xs font-semibold tracking-widest uppercase" style={{ color: '#c8a04e' }}>Our Guarantee</span>
+            <span className="font-sans text-sm font-semibold tracking-widest uppercase" style={{ color: '#c8a04e' }}>The 30-Day Guarantee</span>
           </div>
-          <p className="font-sans text-sm text-text-muted font-light leading-relaxed">
-            If your website doesn&apos;t generate a single enquiry within 30 days of going live, your monthly payments are paused until it does.
-            We build sites that work — and we stand behind that.
+          <p className="font-sans text-sm text-text-muted font-light leading-relaxed max-w-xl mx-auto">
+            If your site doesn&apos;t generate an enquiry in the first 30 days, we pause your monthly until it does.
+            We only take on 5 new clients a month — so when we take you on, we&apos;re committed to making it work.
           </p>
         </div>
 

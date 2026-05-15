@@ -11,7 +11,7 @@ const points = [
         <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.64a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
       </svg>
     ),
-    text: "You're getting most of your work through word of mouth or Facebook",
+    text: "You're relying on word of mouth and Facebook — but work goes quiet in winter",
   },
   {
     id: 'google',
@@ -21,26 +21,26 @@ const points = [
         <path d="m21 21-4.35-4.35" />
       </svg>
     ),
-    text: "Your competitors are showing up on Google and you're not",
+    text: "Your competitors show up on Google every day and get the call before you do",
   },
   {
-    id: 'nevergotroundit',
+    id: 'notfound',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    text: "You've been meaning to sort a website but never got round to it",
+    text: "Customers Google your trade before they ring — if you're not there, you don't exist",
   },
   {
-    id: 'nowebsite',
+    id: 'missedcalls',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
       </svg>
     ),
-    text: "Customers ask for your website and you don't have one to send them",
+    text: "You're missing calls while you're on the job and losing jobs to someone who answered",
   },
 ]
 
@@ -113,7 +113,7 @@ export default function SoundFamiliar() {
           className="font-sans text-base text-center mt-10 font-light"
           style={{ color: '#c8a04e' }}
         >
-          If any of that sounds like you, we can fix it in less than a week.
+          If any of that sounds like you, we fix it in less than a week.
         </motion.p>
       </div>
     </section>
