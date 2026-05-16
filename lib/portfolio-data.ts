@@ -2,7 +2,7 @@ export interface PortfolioItem {
   id: string
   clientName: string
   niche: string
-  meta: string          // "Roofer · Warwick" style label shown on cards
+  meta: string
   location: string
   url: string
   description: string
@@ -12,6 +12,20 @@ export interface PortfolioItem {
 }
 
 export const portfolioData: PortfolioItem[] = [
+  // Order matches bento grid: featured, tall, small×4
+  {
+    id: 'hollyfield-roofing',
+    clientName: 'Hollyfield Roofing',
+    niche: 'Roofer',
+    meta: 'Roofer · Blackburn',
+    location: 'Blackburn, England',
+    url: 'https://hollyfieldroofings.com',
+    description:
+      'Live in 4 days. Emergency roofers now showing up on Google when customers need them most — reviews and click-to-call front and centre.',
+    tags: ['Roofing', 'Mobile-First', 'Trust Building'],
+    imagePlaceholder: '/images/portfolio-hollyfield-roofing.jpg',
+    googleRating: 5.0,
+  },
   {
     id: 'cb-joinery',
     clientName: 'C&B Joinery',
@@ -26,17 +40,30 @@ export const portfolioData: PortfolioItem[] = [
     googleRating: 5.0,
   },
   {
-    id: 'hollyfield-roofing',
-    clientName: 'Hollyfield Roofing',
+    id: 'warwick-roofing',
+    clientName: 'Warwick Roofing',
     niche: 'Roofer',
-    meta: 'Roofer · Blackburn',
-    location: 'Blackburn, England',
-    url: 'https://hollyfieldroofings.com',
+    meta: 'Roofer · Warwick',
+    location: 'Warwick, England',
+    url: 'https://warwickroofingmidlandsltd.com/',
     description:
-      'Live in 4 days. Emergency roofers now showing up on Google when customers need them most — reviews and click-to-call front and centre.',
-    tags: ['Roofing', 'Mobile-First', 'Trust Building'],
-    imagePlaceholder: '/images/portfolio-hollyfield-roofing.jpg',
+      'Live and ranking on Google. Family roofing business with 30+ years experience now getting found by customers searching locally.',
+    tags: ['Roofing', 'Local SEO', 'Lead Generation'],
+    imagePlaceholder: '/images/portfolio-warwick-roofing.jpg',
     googleRating: 5.0,
+  },
+  {
+    id: 'spires-decorating',
+    clientName: 'Spires Decorating',
+    niche: 'Painter & Decorator',
+    meta: 'Painter & Decorator · Northampton',
+    location: 'Northampton, England',
+    url: 'https://spiresdecorating.com',
+    description:
+      'Ranking on Google within weeks of going live. Showcases 20+ years of real work and pulls in local enquiries.',
+    tags: ['Decorating', 'Portfolio Gallery', 'Reviews'],
+    imagePlaceholder: '/images/portfolio-spires-decorating.jpg',
+    googleRating: 4.5,
   },
   {
     id: 'sapphire-spray-coatings',
@@ -52,16 +79,16 @@ export const portfolioData: PortfolioItem[] = [
     googleRating: 5.0,
   },
   {
-    id: 'warwick-roofing',
-    clientName: 'Warwick Roofing',
-    niche: 'Roofer',
-    meta: 'Roofer · Warwick',
-    location: 'Warwick, England',
-    url: 'https://warwickroofingmidlandsltd.com/',
+    id: 'mk-roadside',
+    clientName: 'MK Roadside Solutions',
+    niche: 'Breakdown',
+    meta: 'Breakdown · Milton Keynes',
+    location: 'Milton Keynes, England',
+    url: 'https://mkroadside.co.uk',
     description:
-      'Live and ranking on Google. Family roofing business with 30+ years experience now getting found by customers searching locally.',
-    tags: ['Roofing', 'Local SEO', 'Lead Generation'],
-    imagePlaceholder: '/images/portfolio-warwick-roofing.jpg',
+      'Live and generating enquiries. Roadside assistance business now showing up on Google when local drivers need help most.',
+    tags: ['Roadside', 'Lead Generation', 'Local SEO'],
+    imagePlaceholder: '/images/portfolio-mk-roadside.jpg',
     googleRating: 5.0,
   },
 ]

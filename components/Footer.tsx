@@ -53,7 +53,7 @@ export default function Footer() {
           <div className="space-y-4">
             <StackwellLogoSmall />
             <p className="font-sans text-sm text-text-muted leading-relaxed max-w-xs">
-              Custom websites for UK tradesmen. Built to get you found on Google and bring in paying customers.
+              Websites for UK tradesmen that actually bring in work.
             </p>
           </div>
 

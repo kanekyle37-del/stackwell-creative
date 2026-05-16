@@ -179,7 +179,6 @@ export default function Stats() {
                 <p className="font-sans text-sm font-medium text-text-primary tracking-wide">
                   {item.label}
                 </p>
-                <p className="font-sans text-xs text-text-dim">{item.sub}</p>
               </div>
             </motion.div>
           ))}

@@ -21,7 +21,7 @@ const steps = [
     icon: Users,
     title: 'Start Getting Leads',
     description:
-      "Your site goes live. When someone Googles your trade in your area, your name comes up. They see your reviews, check your work, and call you. You just answer the phone.",
+      "Your site goes live and starts working. Someone nearby searches your trade, finds you, sees your reviews and calls. You answer. That's the whole job.",
   },
 ]
 

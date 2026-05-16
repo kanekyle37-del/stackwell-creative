@@ -1,211 +1,173 @@
 'use client'
 
-import { motion, useAnimation, useInView } from 'framer-motion'
-import { useEffect, useRef, useState } from 'react'
-import { Quote, Star } from 'lucide-react'
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Separator } from '@/components/ui/separator'
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 
 const testimonials = [
   {
     id: 1,
     name: 'Stephen',
     company: 'Warwick Roofing Midlands Ltd',
-    rating: 5,
-    content:
+    initial: 'S',
+    quote:
       'Kyle came across very professional and not pushy like a lot of website designers I have dealt with in the past. His prices are very reasonable and the after sales are excellent — always answers any questions or updates to my site when needed. Very happy with the service.',
   },
   {
     id: 2,
     name: 'Hollyfield Roofing',
     company: 'Roofer · Blackburn',
-    rating: 5,
-    content:
+    initial: 'H',
+    quote:
       "Kyle got in touch about a website and, having had bad experiences with other companies before, I wasn't sure at first. He sent a demo over straight away, the price was fair, and from there it was easy. Communication throughout was great and the finished site looks really good. Very happy with how it all turned out.",
   },
   {
     id: 3,
     name: 'Jai',
     company: 'Sapphire Spray Coatings · Mansfield',
-    rating: 5,
-    content:
-      "Kyle reached out to me about building a site for my business as I didn't have one and normally I wouldn't bother with these calls but I'm so glad I gave him a chance. His responses were informative and prompt, the turnaround on the site was fast and even though I went back to him with tweaks and changes a few times nothing was too much hassle for him. He's gone above my expectations, the colour scheme, how professional it all looks, the details. I'd 100% recommend him to anyone thinking of getting a site made.",
+    initial: 'J',
+    quote:
+      "Kyle reached out to me about building a site for my business as I didn't have one and normally I wouldn't bother with these calls but I'm so glad I gave him a chance. His responses were informative and prompt, the turnaround on the site was fast and even though I went back to him with tweaks and changes a few times nothing was too much hassle. He's gone above my expectations — the colour scheme, how professional it all looks, the details. I'd 100% recommend him to anyone thinking of getting a site made.",
   },
   {
     id: 4,
     name: 'Brad',
     company: 'C&B Joinery · Barrow-in-Furness',
-    rating: 5,
-    content:
+    initial: 'B',
+    quote:
       "Kyle recently reached out to us as we were without a website. There was no hard selling and he was respectful that we are running a business so can't always talk. Very clear instructions as to what the process required — literally needed minutes of my time. We had a drafted website the same day, any amendments were made straight away. Very quick responses to any questions we had. Kyle is a genuine guy who's happy to help. Many thanks.",
   },
 ]
 
-const AUTO_ROTATE_MS = 6000
+function TestimonialCard({ t, uid }: { t: typeof testimonials[0]; uid: string }) {
+  return (
+    <div
+      style={{
+        width: '340px',
+        flexShrink: 0,
+        background: '#111118',
+        border: '1px solid rgba(200,160,78,0.12)',
+        borderRadius: '12px',
+        padding: '24px',
+        marginRight: '16px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0',
+      }}
+      aria-label={`Testimonial from ${t.name}`}
+    >
+      {/* Stars */}
+      <div style={{ display: 'flex', gap: '2px', marginBottom: '14px' }}>
+        {[...Array(5)].map((_, i) => (
+          <svg key={i} width="14" height="14" viewBox="0 0 18 18" fill="#f59e0b" aria-hidden="true">
+            <path d="M9 1.5l2.163 4.38 4.837.703-3.5 3.412.826 4.817L9 12.553l-4.326 2.259.826-4.817L2 6.583l4.837-.703L9 1.5z" />
+          </svg>
+        ))}
+      </div>
+
+      {/* Opening quote mark */}
+      <div style={{ fontSize: '36px', color: '#c8a04e', lineHeight: 0.8, marginBottom: '8px', fontFamily: 'Georgia, serif' }}>&ldquo;</div>
+
+      {/* Quote */}
+      <p style={{ fontSize: '14px', color: '#e8e4dc', lineHeight: 1.7, fontStyle: 'italic', fontFamily: 'var(--font-outfit)', fontWeight: 300, flex: 1, marginBottom: '20px' }}>
+        {t.quote}
+      </p>
+
+      {/* Author */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(200,160,78,0.15)', border: '1px solid rgba(200,160,78,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+          <span style={{ fontSize: '16px', fontWeight: 600, color: '#c8a04e', fontFamily: 'var(--font-outfit)' }}>{t.initial}</span>
+        </div>
+        <div>
+          <p style={{ fontSize: '14px', fontWeight: 600, color: '#e8e4dc', lineHeight: 1.2, fontFamily: 'var(--font-outfit)', margin: 0 }}>{t.name}</p>
+          <p style={{ fontSize: '12px', color: '#8a8680', marginTop: '2px', fontFamily: 'var(--font-outfit)', fontWeight: 300, margin: 0 }}>{t.company}</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+const maskStyle: React.CSSProperties = {
+  overflow: 'hidden',
+  maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+}
 
 export default function Testimonials() {
-  const [activeIndex, setActiveIndex] = useState(0)
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
-  const controls = useAnimation()
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.15 } },
-  }
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  }
-
-  useEffect(() => {
-    if (isInView) controls.start('visible')
-  }, [isInView, controls])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex(i => (i + 1) % testimonials.length)
-    }, AUTO_ROTATE_MS)
-    return () => clearInterval(interval)
-  }, [])
+  const headerRef = useRef<HTMLDivElement>(null)
+  const headerInView = useInView(headerRef, { once: true, amount: 0.3 })
 
   return (
     <section
-      ref={sectionRef}
       className="relative py-24 sm:py-28 overflow-hidden"
       style={{ background: '#0f1117' }}
       aria-labelledby="testimonials-heading"
     >
-      {/* Background glow */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(200,160,78,0.04) 0%, transparent 65%)' }}
-        aria-hidden="true"
-      />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 60% 50% at 50% 40%, rgba(200,160,78,0.04) 0%, transparent 65%)' }} aria-hidden="true" />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div
-          initial="hidden"
-          animate={controls}
-          variants={containerVariants}
-          className="grid grid-cols-1 md:grid-cols-2 gap-14 lg:gap-24 items-center"
+      {/* Header */}
+      <motion.div
+        ref={headerRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={headerInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className="text-center mb-14 px-4"
+      >
+        <p style={{ fontSize: '11px', fontWeight: 500, letterSpacing: '0.15em', color: '#c8a04e', textTransform: 'uppercase', marginBottom: '12px', fontFamily: 'var(--font-outfit)' }}>
+          What Tradesmen Say
+        </p>
+        <h2
+          id="testimonials-heading"
+          style={{ fontFamily: 'var(--font-cormorant)', fontSize: 'clamp(28px, 4vw, 38px)', fontWeight: 400, color: '#e8e4dc', lineHeight: 1.1, marginBottom: '12px' }}
         >
-          {/* Left: heading + navigation */}
-          <motion.div variants={itemVariants} className="flex flex-col justify-center">
-            <p className="font-sans text-xs font-medium tracking-widest uppercase mb-4" style={{ color: '#c8a04e' }}>
-              What Tradesmen Say
-            </p>
-            <h2
-              id="testimonials-heading"
-              className="font-sans text-4xl sm:text-5xl font-semibold mb-5"
-              style={{ color: '#e8e4dc' }}
-            >
-              Real results,
-              <br />real trades
-            </h2>
-            <p className="font-sans text-base font-light leading-relaxed mb-8 max-w-sm" style={{ color: '#6a6660' }}>
-              Don&apos;t take our word for it — here&apos;s what our clients say.
-            </p>
+          Real results, real trades.
+        </h2>
+        <p style={{ fontSize: '14px', color: '#8a8680', fontFamily: 'var(--font-outfit)', fontWeight: 300 }}>
+          Don&apos;t take our word for it — here&apos;s what our clients say.
+        </p>
+      </motion.div>
 
-            {/* Dot navigation */}
-            <div className="flex items-center gap-3">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setActiveIndex(i)}
-                  aria-label={`View testimonial ${i + 1}`}
-                  className="h-2.5 rounded-full transition-all duration-300 cursor-pointer"
-                  style={{
-                    width: activeIndex === i ? '40px' : '10px',
-                    background: activeIndex === i ? '#c8a04e' : 'rgba(200,160,78,0.2)',
-                  }}
-                />
-              ))}
-            </div>
-          </motion.div>
+      {/* Marquee rows */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
 
-          {/* Right: animated testimonial card */}
-          <motion.div variants={itemVariants} className="relative min-h-[340px] sm:min-h-[380px]">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={t.id}
-                className="absolute inset-0"
-                initial={{ opacity: 0, x: 80 }}
-                animate={{
-                  opacity: activeIndex === i ? 1 : 0,
-                  x: activeIndex === i ? 0 : 80,
-                  scale: activeIndex === i ? 1 : 0.95,
-                }}
-                transition={{ duration: 0.5, ease: 'easeInOut' }}
-                style={{ zIndex: activeIndex === i ? 10 : 0 }}
-              >
-                <div
-                  className="rounded-xl p-7 sm:p-8 h-full flex flex-col"
-                  style={{
-                    background: '#111118',
-                    border: '1px solid rgba(200,160,78,0.18)',
-                    boxShadow: '0 8px 40px rgba(0,0,0,0.4)',
-                  }}
-                >
-                  {/* Stars */}
-                  <div className="flex gap-1 mb-5">
-                    {Array(t.rating).fill(0).map((_, si) => (
-                      <Star key={si} size={16} className="fill-gold text-gold" style={{ color: '#c8a04e' }} />
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <div className="relative mb-5 flex-1">
-                    <Quote
-                      size={28}
-                      className="absolute -top-1 -left-1 rotate-180"
-                      style={{ color: 'rgba(200,160,78,0.15)' }}
-                    />
-                    <p className="relative z-10 font-sans text-base font-light leading-relaxed" style={{ color: '#9a9490' }}>
-                      &ldquo;{t.content}&rdquo;
-                    </p>
-                  </div>
-
-                  <Separator className="my-4" />
-
-                  {/* Author */}
-                  <div className="flex items-center gap-3 mt-1">
-                    <Avatar
-                      className="h-10 w-10 flex-shrink-0"
-                      style={{
-                        background: 'rgba(200,160,78,0.1)',
-                        border: '1px solid rgba(200,160,78,0.25)',
-                      } as React.CSSProperties}
-                    >
-                      <AvatarFallback>
-                        <span className="font-sans font-semibold text-sm" style={{ color: '#c8a04e' }}>
-                          {t.name.charAt(0)}
-                        </span>
-                      </AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-sans text-sm font-medium" style={{ color: '#e8e4dc' }}>{t.name}</p>
-                      <p className="font-sans text-xs font-light mt-0.5" style={{ color: '#5a5854' }}>{t.company}</p>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+        {/* Row 1 — scrolls left */}
+        <div className="marquee-row" style={maskStyle}>
+          <div className="marquee-track-left" style={{ display: 'flex', width: 'max-content' }}>
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <TestimonialCard key={`left-${t.id}-${i}`} t={t} uid={`left-${t.id}-${i}`} />
             ))}
+          </div>
+        </div>
 
-            {/* Decorative corners */}
-            <div
-              className="absolute -bottom-5 -left-5 h-20 w-20 rounded-xl pointer-events-none"
-              style={{ background: 'rgba(200,160,78,0.04)' }}
-              aria-hidden="true"
-            />
-            <div
-              className="absolute -top-5 -right-5 h-20 w-20 rounded-xl pointer-events-none"
-              style={{ background: 'rgba(200,160,78,0.04)' }}
-              aria-hidden="true"
-            />
-          </motion.div>
-        </motion.div>
+        {/* Row 2 — scrolls right */}
+        <div className="marquee-row" style={maskStyle}>
+          <div className="marquee-track-right" style={{ display: 'flex', width: 'max-content' }}>
+            {[...testimonials, ...testimonials].map((t, i) => (
+              <TestimonialCard key={`right-${t.id}-${i}`} t={t} uid={`right-${t.id}-${i}`} />
+            ))}
+          </div>
+        </div>
       </div>
+
+      <style>{`
+        @keyframes marquee-left {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes marquee-right {
+          0%   { transform: translateX(-50%); }
+          100% { transform: translateX(0); }
+        }
+        .marquee-track-left {
+          animation: marquee-left 28s linear infinite;
+        }
+        .marquee-track-right {
+          animation: marquee-right 28s linear infinite;
+        }
+        .marquee-row:hover .marquee-track-left,
+        .marquee-row:hover .marquee-track-right {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   )
 }

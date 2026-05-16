@@ -40,7 +40,7 @@ const points = [
         <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
       </svg>
     ),
-    text: "You're missing calls while you're on the job and losing jobs to someone who answered",
+    text: "You're on the job, miss a call, and the customer rings the next person on Google instead",
   },
 ]
 
@@ -113,7 +113,7 @@ export default function SoundFamiliar() {
           className="font-sans text-base text-center mt-10 font-light"
           style={{ color: '#c8a04e' }}
         >
-          If any of that sounds like you, we fix it in less than a week.
+          We fix all of that. Usually within the week.
         </motion.p>
       </div>
     </section>

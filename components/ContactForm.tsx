@@ -138,16 +138,15 @@ export default function ContactForm() {
               <span className="text-gold-gradient italic">We&apos;ll do the rest.</span>
             </h2>
             <p className="font-sans text-text-muted text-base leading-relaxed mb-8 font-light">
-              Drop your name and number and we&apos;ll call you back for a quick 10-minute chat.
-              No commitment, no pressure. Just a straight conversation about whether a website
-              makes sense for your business.
+              Drop your name and number and we&apos;ll call you back same day. Quick 10-minute chat,
+              no commitment. We&apos;ll tell you straight whether we can help.
             </p>
 
             {/* What happens next */}
             <div className="space-y-4">
               {[
                 { step: '1', text: 'You leave your number' },
-                { step: '2', text: 'We call you back within a few hours' },
+                { step: '2', text: 'We call you back same day' },
                 { step: '3', text: "If it's a fit, we get started. If not, no worries." },
               ].map((item) => (
                 <div key={item.step} className="flex items-start gap-4">
