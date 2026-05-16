@@ -3,11 +3,13 @@
 import { useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import StarRating from '@/components/StarRating'
 
 interface CardData {
   id: string
   domain: string
+  screenshot?: string
   heroBackground: string
   heroContent: React.ReactNode
   ctaColor: string
@@ -21,16 +23,16 @@ interface CardData {
 
 function BrowserMockup({
   domain,
+  screenshot,
   heroBackground,
   heroContent,
   ctaColor,
-  isMobile,
 }: {
   domain: string
+  screenshot?: string
   heroBackground: string
   heroContent: React.ReactNode
   ctaColor: string
-  isMobile?: boolean
 }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
@@ -38,7 +40,7 @@ function BrowserMockup({
       <div
         style={{
           flexShrink: 0,
-          background: 'rgba(255,255,255,0.04)',
+          background: 'rgba(5,6,10,0.95)',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
           display: 'flex',
           alignItems: 'center',
@@ -70,55 +72,68 @@ function BrowserMockup({
         </div>
       </div>
 
-      {/* Hero content area */}
-      <div
-        style={{
-          flex: 1,
-          background: heroBackground,
-          padding: '20px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          gap: '12px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Nav hints */}
+      {/* Screenshot or fallback mockup */}
+      {screenshot ? (
+        <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+          <Image
+            src={screenshot}
+            alt={`${domain} website screenshot`}
+            fill
+            sizes="(max-width: 768px) 85vw, 520px"
+            className="object-cover object-top"
+            quality={90}
+            draggable={false}
+          />
+        </div>
+      ) : (
         <div
           style={{
-            position: 'absolute',
-            top: '12px',
-            right: '16px',
+            flex: 1,
+            background: heroBackground,
+            padding: '20px',
             display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
             gap: '12px',
+            position: 'relative',
+            overflow: 'hidden',
           }}
         >
-          {['About', 'Services', 'Contact'].map((s) => (
-            <div key={s} style={{ fontSize: '8px', color: 'rgba(255,255,255,0.2)', fontWeight: 500 }}>
-              {s}
-            </div>
-          ))}
-        </div>
+          <div
+            style={{
+              position: 'absolute',
+              top: '12px',
+              right: '16px',
+              display: 'flex',
+              gap: '12px',
+            }}
+          >
+            {['About', 'Services', 'Contact'].map((s) => (
+              <div key={s} style={{ fontSize: '8px', color: 'rgba(255,255,255,0.2)', fontWeight: 500 }}>
+                {s}
+              </div>
+            ))}
+          </div>
 
-        {heroContent}
+          {heroContent}
 
-        <div
-          style={{
-            background: ctaColor,
-            color: '#fff',
-            fontSize: isMobile ? '9px' : '10px',
-            fontWeight: 700,
-            padding: '6px 14px',
-            borderRadius: '4px',
-            letterSpacing: '0.06em',
-            textTransform: 'uppercase',
-            alignSelf: 'flex-start',
-          }}
-        >
-          Get a Free Quote
+          <div
+            style={{
+              background: ctaColor,
+              color: '#fff',
+              fontSize: '10px',
+              fontWeight: 700,
+              padding: '6px 14px',
+              borderRadius: '4px',
+              letterSpacing: '0.06em',
+              textTransform: 'uppercase',
+              alignSelf: 'flex-start',
+            }}
+          >
+            Get a Free Quote
+          </div>
         </div>
-      </div>
+      )}
     </div>
   )
 }
@@ -127,6 +142,7 @@ const cards: CardData[] = [
   {
     id: 'hollyfield-roofing',
     domain: 'hollyfieldroofings.com',
+    screenshot: '/images/portfolio-hollyfield-roofing.jpg',
     heroBackground: 'linear-gradient(135deg, #1a1a1a 0%, #252525 100%)',
     heroContent: (
       <div
@@ -154,6 +170,7 @@ const cards: CardData[] = [
   {
     id: 'warwick-roofing',
     domain: 'warwickrooftop.co.uk',
+    screenshot: '/images/portfolio-warwick-roofing.jpg',
     heroBackground: 'linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%)',
     heroContent: (
       <div
@@ -181,6 +198,7 @@ const cards: CardData[] = [
   {
     id: 'spires-decorating',
     domain: 'spiresdecorating.com',
+    screenshot: '/images/portfolio-spires-decorating.jpg',
     heroBackground: '#f5f0e8',
     heroContent: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -219,6 +237,7 @@ const cards: CardData[] = [
   {
     id: 'sapphire-spray-coatings',
     domain: 'sapphirespraycoatings.co.uk',
+    screenshot: '/images/portfolio-sapphire-spray-coatings.jpg',
     heroBackground: '#0a0e1a',
     heroContent: (
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -330,6 +349,7 @@ function PortfolioCard({ card }: { card: CardData }) {
       <div style={{ flex: '0 0 65%', overflow: 'hidden', position: 'relative' }}>
         <BrowserMockup
           domain={card.domain}
+          screenshot={card.screenshot}
           heroBackground={card.heroBackground}
           heroContent={card.heroContent}
           ctaColor={card.ctaColor}
