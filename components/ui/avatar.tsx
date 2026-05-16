@@ -2,9 +2,9 @@
 
 import * as React from 'react'
 
-export function Avatar({ className, children }: { className?: string; children: React.ReactNode }) {
+export function Avatar({ className, style, children }: { className?: string; style?: React.CSSProperties; children: React.ReactNode }) {
   return (
-    <div className={`relative flex shrink-0 overflow-hidden rounded-full ${className ?? ''}`}>
+    <div className={`relative flex shrink-0 overflow-hidden rounded-full ${className ?? ''}`} style={style}>
       {children}
     </div>
   )
