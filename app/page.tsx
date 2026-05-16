@@ -41,7 +41,7 @@ function PricingPreviewSection() {
           <p className="font-sans text-text-muted mt-4 max-w-lg mx-auto text-base leading-relaxed font-light">
             No hidden fees. No surprises. One job won from your site pays for the first year.
           </p>
-          <p className="font-sans text-sm text-text-dim mt-3 max-w-md mx-auto font-light">
+          <p className="font-sans text-sm mt-3 max-w-md mx-auto font-light" style={{ color: '#c8a04e' }}>
             Most clients see their first enquiry within the first week.
           </p>
         </div>

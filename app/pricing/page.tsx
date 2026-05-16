@@ -68,8 +68,8 @@ export default function PricingPage() {
               <span className="font-sans text-sm font-semibold tracking-widest uppercase" style={{ color: '#c8a04e' }}>The 30-Day Guarantee</span>
             </div>
             <p className="font-sans text-sm text-text-muted font-light leading-relaxed max-w-xl mx-auto">
-              If your site doesn&apos;t generate an enquiry in the first 30 days, we pause your monthly until it does.
-              We only take on 5 new clients a month — so when we take you on, we&apos;re committed to making it work.
+              If your site doesn&apos;t bring in an enquiry within 30 days, you stop paying monthly until it does. Simple as that.
+              We only take on 5 new clients a month — when we say yes to you, we&apos;re fully in.
             </p>
           </motion.div>
 
