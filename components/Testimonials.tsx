@@ -1,9 +1,18 @@
 'use client'
 
-import { useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
-const testimonials = [
+interface Testimonial {
+  id: number
+  quote: string
+  name: string
+  company: string
+  initial: string
+}
+
+const testimonials: Testimonial[] = [
   {
     id: 1,
     name: 'Stephen',
@@ -38,63 +47,84 @@ const testimonials = [
   },
 ]
 
-function TestimonialCard({ t, uid }: { t: typeof testimonials[0]; uid: string }) {
-  return (
-    <div
-      style={{
-        width: '340px',
-        flexShrink: 0,
-        background: '#111118',
-        border: '1px solid rgba(200,160,78,0.12)',
-        borderRadius: '12px',
-        padding: '24px',
-        marginRight: '16px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0',
-      }}
-      aria-label={`Testimonial from ${t.name}`}
-    >
-      {/* Stars */}
-      <div style={{ display: 'flex', gap: '2px', marginBottom: '14px' }}>
-        {[...Array(5)].map((_, i) => (
-          <svg key={i} width="14" height="14" viewBox="0 0 18 18" fill="#f59e0b" aria-hidden="true">
-            <path d="M9 1.5l2.163 4.38 4.837.703-3.5 3.412.826 4.817L9 12.553l-4.326 2.259.826-4.817L2 6.583l4.837-.703L9 1.5z" />
-          </svg>
-        ))}
-      </div>
-
-      {/* Opening quote mark */}
-      <div style={{ fontSize: '36px', color: '#c8a04e', lineHeight: 0.8, marginBottom: '8px', fontFamily: 'Georgia, serif' }}>&ldquo;</div>
-
-      {/* Quote */}
-      <p style={{ fontSize: '14px', color: '#e8e4dc', lineHeight: 1.7, fontStyle: 'italic', fontFamily: 'var(--font-outfit)', fontWeight: 300, flex: 1, marginBottom: '20px' }}>
-        {t.quote}
-      </p>
-
-      {/* Author */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-        <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(200,160,78,0.15)', border: '1px solid rgba(200,160,78,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-          <span style={{ fontSize: '16px', fontWeight: 600, color: '#c8a04e', fontFamily: 'var(--font-outfit)' }}>{t.initial}</span>
-        </div>
-        <div>
-          <p style={{ fontSize: '14px', fontWeight: 600, color: '#e8e4dc', lineHeight: 1.2, fontFamily: 'var(--font-outfit)', margin: 0 }}>{t.name}</p>
-          <p style={{ fontSize: '12px', color: '#8a8680', marginTop: '2px', fontFamily: 'var(--font-outfit)', fontWeight: 300, margin: 0 }}>{t.company}</p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-const maskStyle: React.CSSProperties = {
-  overflow: 'hidden',
-  maskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
-  WebkitMaskImage: 'linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)',
+const getVisibleCount = (width: number): number => {
+  if (width >= 1024) return 3
+  if (width >= 640) return 2
+  return 1
 }
 
 export default function Testimonials() {
   const headerRef = useRef<HTMLDivElement>(null)
   const headerInView = useInView(headerRef, { once: true, amount: 0.3 })
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [windowWidth, setWindowWidth] = useState(1024)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true)
+  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const [direction, setDirection] = useState(1)
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    const handleResize = () => {
+      const newWidth = window.innerWidth
+      setWindowWidth(newWidth)
+      const maxIdx = testimonials.length - getVisibleCount(newWidth)
+      setCurrentIndex(prev => Math.min(prev, Math.max(0, maxIdx)))
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (!isAutoPlaying) return
+    autoPlayRef.current = setInterval(() => {
+      const visibleCount = getVisibleCount(windowWidth)
+      const maxIndex = testimonials.length - visibleCount
+      setCurrentIndex(prev => {
+        if (prev >= maxIndex) { setDirection(-1); return prev - 1 }
+        if (prev <= 0) { setDirection(1); return prev + 1 }
+        return prev + direction
+      })
+    }, 4000)
+    return () => { if (autoPlayRef.current) clearInterval(autoPlayRef.current) }
+  }, [isAutoPlaying, currentIndex, windowWidth, direction])
+
+  const visibleCount = getVisibleCount(windowWidth)
+  const maxIndex = testimonials.length - visibleCount
+
+  const pauseAutoPlay = () => {
+    setIsAutoPlaying(false)
+    setTimeout(() => setIsAutoPlaying(true), 8000)
+  }
+
+  const goNext = () => {
+    if (currentIndex < maxIndex) {
+      setDirection(1)
+      setCurrentIndex(prev => Math.min(prev + 1, maxIndex))
+      pauseAutoPlay()
+    }
+  }
+
+  const goPrev = () => {
+    if (currentIndex > 0) {
+      setDirection(-1)
+      setCurrentIndex(prev => Math.max(prev - 1, 0))
+      pauseAutoPlay()
+    }
+  }
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index)
+    pauseAutoPlay()
+  }
+
+  const handleDragEnd = (_event: unknown, info: { offset: { x: number } }) => {
+    if (info.offset.x < -30 && currentIndex < maxIndex) goNext()
+    else if (info.offset.x > 30 && currentIndex > 0) goPrev()
+  }
+
+  const cardWidth = 100 / visibleCount
 
   return (
     <section
@@ -126,48 +156,155 @@ export default function Testimonials() {
         </p>
       </motion.div>
 
-      {/* Marquee rows */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="relative" ref={containerRef}>
 
-        {/* Row 1 — scrolls left */}
-        <div className="marquee-row" style={maskStyle}>
-          <div className="marquee-track-left" style={{ display: 'flex', width: 'max-content' }}>
-            {[...testimonials, ...testimonials].map((t, i) => (
-              <TestimonialCard key={`left-${t.id}-${i}`} t={t} uid={`left-${t.id}-${i}`} />
+          {/* Nav buttons */}
+          <div className="flex justify-center sm:justify-end sm:absolute sm:-top-16 right-0 gap-2 mb-6 sm:mb-0">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={goPrev}
+              disabled={currentIndex === 0}
+              style={{
+                padding: '8px',
+                borderRadius: '50%',
+                background: currentIndex === 0 ? 'rgba(255,255,255,0.04)' : 'rgba(200,160,78,0.1)',
+                border: currentIndex === 0 ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(200,160,78,0.3)',
+                color: currentIndex === 0 ? '#3a3835' : '#c8a04e',
+                cursor: currentIndex === 0 ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft size={20} />
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={goNext}
+              disabled={currentIndex >= maxIndex}
+              style={{
+                padding: '8px',
+                borderRadius: '50%',
+                background: currentIndex >= maxIndex ? 'rgba(255,255,255,0.04)' : 'rgba(200,160,78,0.1)',
+                border: currentIndex >= maxIndex ? '1px solid rgba(255,255,255,0.08)' : '1px solid rgba(200,160,78,0.3)',
+                color: currentIndex >= maxIndex ? '#3a3835' : '#c8a04e',
+                cursor: currentIndex >= maxIndex ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+              aria-label="Next testimonial"
+            >
+              <ChevronRight size={20} />
+            </motion.button>
+          </div>
+
+          {/* Slider */}
+          <div className="overflow-hidden">
+            <motion.div
+              className="flex"
+              animate={{ x: `-${currentIndex * cardWidth}%` }}
+              transition={{ type: 'spring', stiffness: 70, damping: 20 }}
+            >
+              {testimonials.map((t) => (
+                <motion.div
+                  key={t.id}
+                  style={{ flexShrink: 0, width: `${cardWidth}%`, padding: '8px' }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={handleDragEnd}
+                  whileHover={{ y: -4 }}
+                  whileTap={{ scale: 0.98 }}
+                  aria-label={`Testimonial from ${t.name}`}
+                >
+                  <div
+                    style={{
+                      background: '#111118',
+                      border: '1px solid rgba(200,160,78,0.12)',
+                      borderRadius: '14px',
+                      padding: '28px',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '0',
+                      cursor: 'grab',
+                      transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
+                    }}
+                    onMouseEnter={e => {
+                      (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(200,160,78,0.3)'
+                      ;(e.currentTarget as HTMLDivElement).style.boxShadow = '0 16px 48px rgba(0,0,0,0.4)'
+                    }}
+                    onMouseLeave={e => {
+                      (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(200,160,78,0.12)'
+                      ;(e.currentTarget as HTMLDivElement).style.boxShadow = 'none'
+                    }}
+                  >
+                    {/* Stars */}
+                    <div style={{ display: 'flex', gap: '2px', marginBottom: '16px' }}>
+                      {[...Array(5)].map((_, i) => (
+                        <svg key={i} width="14" height="14" viewBox="0 0 18 18" fill="#f59e0b" aria-hidden="true">
+                          <path d="M9 1.5l2.163 4.38 4.837.703-3.5 3.412.826 4.817L9 12.553l-4.326 2.259.826-4.817L2 6.583l4.837-.703L9 1.5z" />
+                        </svg>
+                      ))}
+                    </div>
+
+                    {/* Quote mark */}
+                    <div style={{ fontSize: '36px', color: '#c8a04e', lineHeight: 0.8, marginBottom: '10px', fontFamily: 'Georgia, serif' }}>&ldquo;</div>
+
+                    {/* Quote */}
+                    <p style={{ fontSize: '14px', color: '#e8e4dc', lineHeight: 1.75, fontStyle: 'italic', fontFamily: 'var(--font-outfit)', fontWeight: 300, flex: 1, marginBottom: '24px' }}>
+                      {t.quote}
+                    </p>
+
+                    {/* Author */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '16px', borderTop: '1px solid rgba(200,160,78,0.1)' }}>
+                      <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(200,160,78,0.12)', border: '1px solid rgba(200,160,78,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                        <span style={{ fontSize: '16px', fontWeight: 600, color: '#c8a04e', fontFamily: 'var(--font-outfit)' }}>{t.initial}</span>
+                      </div>
+                      <div>
+                        <p style={{ fontSize: '14px', fontWeight: 600, color: '#e8e4dc', lineHeight: 1.2, fontFamily: 'var(--font-outfit)', margin: 0 }}>{t.name}</p>
+                        <p style={{ fontSize: '12px', color: '#8a8680', marginTop: '2px', fontFamily: 'var(--font-outfit)', fontWeight: 300, margin: 0 }}>{t.company}</p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Dots */}
+          <div className="flex justify-center mt-8 gap-2">
+            {Array.from({ length: maxIndex + 1 }, (_, i) => (
+              <motion.button
+                key={i}
+                onClick={() => goToSlide(i)}
+                className="relative focus:outline-none"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label={`Go to slide ${i + 1}`}
+              >
+                <motion.div
+                  style={{
+                    width: i === currentIndex ? '20px' : '8px',
+                    height: '8px',
+                    borderRadius: '4px',
+                    background: i === currentIndex ? '#c8a04e' : 'rgba(200,160,78,0.2)',
+                    transition: 'all 0.3s ease',
+                  }}
+                />
+              </motion.button>
             ))}
           </div>
-        </div>
 
-        {/* Row 2 — scrolls right */}
-        <div className="marquee-row" style={maskStyle}>
-          <div className="marquee-track-right" style={{ display: 'flex', width: 'max-content' }}>
-            {[...testimonials, ...testimonials].map((t, i) => (
-              <TestimonialCard key={`right-${t.id}-${i}`} t={t} uid={`right-${t.id}-${i}`} />
-            ))}
-          </div>
         </div>
       </div>
-
-      <style>{`
-        @keyframes marquee-left {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        @keyframes marquee-right {
-          0%   { transform: translateX(-50%); }
-          100% { transform: translateX(0); }
-        }
-        .marquee-track-left {
-          animation: marquee-left 28s linear infinite;
-        }
-        .marquee-track-right {
-          animation: marquee-right 28s linear infinite;
-        }
-        .marquee-row:hover .marquee-track-left,
-        .marquee-row:hover .marquee-track-right {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   )
 }
