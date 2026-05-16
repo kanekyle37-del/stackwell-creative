@@ -139,6 +139,36 @@ function BrowserMockup({
 }
 
 const cards: CardData[] = [
+  // 1 — C&B Joinery
+  {
+    id: 'cb-joinery',
+    domain: 'cbjoineryltd.com',
+    screenshot: '/images/portfolio-cb-joinery.jpg',
+    heroBackground: 'linear-gradient(135deg, #1a2018 0%, #212820 100%)',
+    heroContent: (
+      <div
+        style={{
+          fontWeight: 800,
+          fontSize: '21px',
+          color: '#f0ece4',
+          letterSpacing: '0.04em',
+          lineHeight: 1.2,
+          textTransform: 'uppercase',
+          maxWidth: '80%',
+        }}
+      >
+        BARROW&apos;S TRUSTED JOINERS
+      </div>
+    ),
+    ctaColor: '#c8a04e',
+    trade: 'Joiner',
+    clientName: 'C&B Joinery',
+    metaText: 'Joiner · Barrow-in-Furness',
+    rating: 5.0,
+    resultPill: 'Live same day. 5★ rated.',
+    liveUrl: 'https://cbjoineryltd.com',
+  },
+  // 2 — Hollyfield Roofing
   {
     id: 'hollyfield-roofing',
     domain: 'hollyfieldroofings.com',
@@ -167,34 +197,71 @@ const cards: CardData[] = [
     resultPill: 'Live in 4 days · Now ranking on Google',
     liveUrl: 'https://hollyfieldroofings.com',
   },
+  // 3 — Sapphire Spray Coatings
   {
-    id: 'warwick-roofing',
-    domain: 'warwickrooftop.co.uk',
-    screenshot: '/images/portfolio-warwick-roofing.jpg',
-    heroBackground: 'linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%)',
+    id: 'sapphire-spray-coatings',
+    domain: 'sapphirespraycoatings.co.uk',
+    screenshot: '/images/portfolio-sapphire-spray-coatings.jpg',
+    heroBackground: '#0a0e1a',
     heroContent: (
-      <div
-        style={{
-          fontWeight: 800,
-          fontSize: '19px',
-          color: '#ffffff',
-          letterSpacing: '0.04em',
-          lineHeight: 1.2,
-          textTransform: 'uppercase',
-          maxWidth: '80%',
-        }}
-      >
-        WARWICK&apos;S MOST TRUSTED ROOFING SPECIALISTS
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <div
+          style={{
+            fontWeight: 800,
+            fontSize: '22px',
+            color: '#ffffff',
+            lineHeight: 1.15,
+          }}
+        >
+          Home.{' '}
+          <span style={{ color: '#3b82f6' }}>No</span>
+          {' '}fuss needed.
+        </div>
+        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>
+          Professional spray coatings &amp; UPVC in Mansfield
+        </div>
       </div>
     ),
-    ctaColor: '#e8621a',
-    trade: 'Roofer',
-    clientName: 'Warwick Roofing',
-    metaText: 'Roofer · Warwick',
+    ctaColor: '#3b82f6',
+    trade: 'Painter & Decorator',
+    clientName: 'Sapphire Spray Coatings',
+    metaText: 'Painter & Decorator · Mansfield',
     rating: 5.0,
-    resultPill: '30+ years showcased · Ranking locally',
-    liveUrl: 'https://warwickrooftop.co.uk',
+    resultPill: '3 enquiries in first 30 days',
+    liveUrl: 'https://sapphirespraycoatings.co.uk',
   },
+  // 4 — MK Roadside Solutions
+  {
+    id: 'mk-roadside',
+    domain: 'mkroadside.co.uk',
+    screenshot: '/images/portfolio-mk-roadside.jpg',
+    heroBackground: '#111111',
+    heroContent: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <div
+          style={{
+            fontWeight: 800,
+            fontSize: '22px',
+            color: '#ffffff',
+            lineHeight: 1.15,
+          }}
+        >
+          MK Roadside Solutions
+        </div>
+        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: 400 }}>
+          24/7 roadside recovery · Milton Keynes
+        </div>
+      </div>
+    ),
+    ctaColor: '#c8a04e',
+    trade: 'Breakdown',
+    clientName: 'MK Roadside Solutions',
+    metaText: 'Breakdown · Milton Keynes',
+    rating: 5.0,
+    resultPill: 'Live and generating enquiries',
+    liveUrl: 'https://mkroadside.co.uk',
+  },
+  // 5 — Spires Decorating
   {
     id: 'spires-decorating',
     domain: 'spiresdecorating.com',
@@ -234,93 +301,34 @@ const cards: CardData[] = [
     resultPill: '20+ years of work. Online in 5 days.',
     liveUrl: 'https://spiresdecorating.com',
   },
+  // 6 — Warwick Roofing
   {
-    id: 'sapphire-spray-coatings',
-    domain: 'sapphirespraycoatings.co.uk',
-    screenshot: '/images/portfolio-sapphire-spray-coatings.jpg',
-    heroBackground: '#0a0e1a',
-    heroContent: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        <div
-          style={{
-            fontWeight: 800,
-            fontSize: '22px',
-            color: '#ffffff',
-            lineHeight: 1.15,
-          }}
-        >
-          Home.{' '}
-          <span style={{ color: '#3b82f6' }}>No</span>
-          {' '}fuss needed.
-        </div>
-        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>
-          Professional spray coatings &amp; UPVC in Mansfield
-        </div>
-      </div>
-    ),
-    ctaColor: '#3b82f6',
-    trade: 'Painter & Decorator',
-    clientName: 'Sapphire Spray Coatings',
-    metaText: 'Painter & Decorator · Mansfield',
-    rating: 5.0,
-    resultPill: '3 enquiries in first 30 days',
-    liveUrl: 'https://sapphirespraycoatings.co.uk',
-  },
-  {
-    id: 'cb-joinery',
-    domain: 'cbjoineryltd.com',
-    heroBackground: 'linear-gradient(135deg, #1a2018 0%, #212820 100%)',
+    id: 'warwick-roofing',
+    domain: 'warwickrooftop.co.uk',
+    screenshot: '/images/portfolio-warwick-roofing.jpg',
+    heroBackground: 'linear-gradient(135deg, #0d1117 0%, #1a1f2e 100%)',
     heroContent: (
       <div
         style={{
           fontWeight: 800,
-          fontSize: '21px',
-          color: '#f0ece4',
+          fontSize: '19px',
+          color: '#ffffff',
           letterSpacing: '0.04em',
           lineHeight: 1.2,
           textTransform: 'uppercase',
           maxWidth: '80%',
         }}
       >
-        BARROW&apos;S TRUSTED JOINERS
+        WARWICK&apos;S MOST TRUSTED ROOFING SPECIALISTS
       </div>
     ),
-    ctaColor: '#c8a04e',
-    trade: 'Joiner',
-    clientName: 'C&B Joinery',
-    metaText: 'Joiner · Barrow-in-Furness',
+    ctaColor: '#e8621a',
+    trade: 'Roofer',
+    clientName: 'Warwick Roofing',
+    metaText: 'Roofer · Warwick',
     rating: 5.0,
-    resultPill: 'Live same day. 5★ rated.',
-    liveUrl: 'https://cbjoineryltd.com',
-  },
-  {
-    id: 'mk-roadside',
-    domain: 'mkroadside.co.uk',
-    heroBackground: '#111111',
-    heroContent: (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
-        <div
-          style={{
-            fontWeight: 800,
-            fontSize: '22px',
-            color: '#ffffff',
-            lineHeight: 1.15,
-          }}
-        >
-          MK Roadside Solutions
-        </div>
-        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.4)', fontWeight: 400 }}>
-          24/7 roadside recovery · Milton Keynes
-        </div>
-      </div>
-    ),
-    ctaColor: '#c8a04e',
-    trade: 'Breakdown',
-    clientName: 'MK Roadside Solutions',
-    metaText: 'Breakdown · Milton Keynes',
-    rating: 5.0,
-    resultPill: 'Live and generating enquiries',
-    liveUrl: 'https://mkroadside.co.uk',
+    resultPill: '30+ years showcased · Ranking locally',
+    liveUrl: 'https://warwickrooftop.co.uk',
   },
 ]
 
@@ -407,9 +415,9 @@ function PortfolioCard({ card }: { card: CardData }) {
           <span style={{ fontSize: '13px', color: '#8a8680', fontFamily: 'var(--font-outfit)', fontWeight: 300 }}>
             {card.metaText}
           </span>
-          <span style={{ fontSize: '13px', color: '#3a3835' }}>·</span>
+          <span style={{ fontSize: '13px', color: '#3a3835', fontFamily: 'var(--font-outfit)' }}>·</span>
           <StarRating rating={card.rating} size={11} />
-          <span style={{ fontSize: '13px', color: '#8a8680' }}>{card.rating.toFixed(1)}</span>
+          <span style={{ fontSize: '13px', color: '#8a8680', fontFamily: 'var(--font-outfit)' }}>{card.rating.toFixed(1)}</span>
         </div>
 
         {/* Result pill — always visible */}

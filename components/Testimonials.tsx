@@ -256,7 +256,7 @@ export default function Testimonials() {
                     </div>
 
                     {/* Quote mark */}
-                    <div style={{ fontSize: '36px', color: '#c8a04e', lineHeight: 0.8, marginBottom: '10px', fontFamily: 'Georgia, serif' }}>&ldquo;</div>
+                    <div style={{ fontSize: '44px', color: '#c8a04e', lineHeight: 0.8, marginBottom: '10px', fontFamily: 'var(--font-cormorant)' }}>&ldquo;</div>
 
                     {/* Quote */}
                     <p style={{ fontSize: '14px', color: '#e8e4dc', lineHeight: 1.75, fontStyle: 'italic', fontFamily: 'var(--font-outfit)', fontWeight: 300, flex: 1, marginBottom: '24px' }}>
