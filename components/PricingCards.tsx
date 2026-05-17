@@ -17,6 +17,7 @@ interface PricingTier {
   smallPrint: string
   description: string
   features: PricingFeature[]
+  closingLine?: string
   highlighted: boolean
   cta: string
 }
@@ -37,14 +38,15 @@ export const pricingTiers: PricingTier[] = [
     smallPrint: "That's less than a tank of fuel",
     description: 'Get online and get found.',
     features: [
-      { title: 'Custom-designed trade website', sub: 'Built around your trade, your area, your reviews' },
-      { title: 'Mobile-first on every device', sub: '80% of your customers search on their phone' },
-      { title: 'Google Reviews integrated', sub: 'Your best social proof, front and centre' },
-      { title: 'Click-to-call everywhere', sub: 'One tap and they\'re ringing you' },
-      { title: 'Contact form with lead alerts', sub: 'Every enquiry lands straight in your pocket' },
-      { title: 'Hosting and maintenance included', sub: 'We handle the tech. You handle the jobs' },
-      { title: 'SSL certificate', sub: 'Secure, trusted, professional' },
+      { title: 'Custom-designed trade website', sub: 'Built around your trade, your area, and your real Google reviews. Not a template.' },
+      { title: 'Mobile-first on every device', sub: '80% of your customers search on their phone. It works perfectly on every screen.' },
+      { title: 'Google Reviews integrated', sub: 'Your best social proof shown front and centre. Builds trust before they even call.' },
+      { title: 'Click-to-call everywhere', sub: 'Every phone number on the site is one tap away from ringing you directly.' },
+      { title: 'Contact form with lead alerts', sub: 'Every enquiry lands straight in your pocket the moment it comes in.' },
+      { title: 'Hosting and maintenance included', sub: 'We handle the technical side. You handle the jobs.' },
+      { title: 'SSL certificate', sub: 'Secure, trusted, and professional from day one.' },
     ],
+    closingLine: 'Everything you need to get online and start being found.',
     highlighted: false,
     cta: 'Get Your Quote',
   },
@@ -57,14 +59,14 @@ export const pricingTiers: PricingTier[] = [
     smallPrint: 'One job won pays for the first year',
     description: 'Everything you need to get found and keep the phone ringing.',
     features: [
-      { title: 'Everything in Starter' },
-      { title: 'Local SEO setup', sub: 'Rank when locals search your trade in your area' },
-      { title: 'Google Business Profile setup and monthly post', sub: 'Stay active and visible on Maps' },
-      { title: 'Top 20 UK trade directory listings', sub: 'More places online that send people to you' },
-      { title: 'Missed call text-back', sub: 'you\'re on the job, miss a call, an automatic text goes out instantly. You don\'t lose the lead.' },
-      { title: 'Automated review requests', sub: 'After every job, your customer gets a prompt to leave a Google review. More reviews, higher ranking, more calls' },
-      { title: 'Monthly lead text alerts', sub: 'Every enquiry pinged straight to your phone' },
-      { title: '48-hour edit turnaround', sub: 'Need something changed? Done within 2 days' },
+      { title: 'Everything in Starter', sub: 'All seven features above, included as standard.' },
+      { title: 'Local SEO setup', sub: 'When someone nearby searches your trade, your name comes up. That\'s what this does.' },
+      { title: 'Google Business Profile setup and monthly post', sub: 'We set it up and keep it active. Google Maps sends you customers when it\'s maintained.' },
+      { title: 'Top 20 UK trade directory listings', sub: '20 more places online with your name and number. More routes for customers to find you.' },
+      { title: 'Missed call text-back', sub: 'You\'re on the job and miss a call. An automatic text goes out within seconds. You don\'t lose the lead.' },
+      { title: 'Automated review requests', sub: 'After every job, your customer gets a prompt to leave a Google review. More reviews mean higher rankings mean more calls.' },
+      { title: 'Monthly lead text alerts', sub: 'Every enquiry pinged straight to your phone the moment it comes in.' },
+      { title: '48-hour edit turnaround', sub: 'Need something changed? Send us a message. Done within two days, no chasing needed.' },
     ],
     highlighted: true,
     cta: 'Get Your Quote',
@@ -78,11 +80,11 @@ export const pricingTiers: PricingTier[] = [
     smallPrint: "Less than one day's materials",
     description: 'For tradesmen who want to own their local area online.',
     features: [
-      { title: 'Everything in Growth' },
-      { title: 'Google Ads management', sub: 'Show up at the top of Google the day your site goes live. Paid clicks, qualified leads' },
-      { title: 'Monthly performance report', sub: 'See exactly how many people found your site, called you, and enquired. Know your numbers' },
-      { title: 'Quarterly strategy call', sub: '30 minutes every quarter — we review what\'s working and what to push next' },
-      { title: 'Priority 24-hour build and edit turnaround', sub: 'Jump the queue. Always first' },
+      { title: 'Everything in Growth', sub: 'The complete Growth package included. Every feature, every month.' },
+      { title: 'Google Ads management', sub: 'Show up at the very top of Google the day your site goes live. Paid clicks, qualified leads, managed for you.' },
+      { title: 'Monthly performance report', sub: 'Every month you see exactly how many people found your site, called you, and enquired. You always know your numbers.' },
+      { title: 'Quarterly strategy call', sub: '30 minutes every quarter. We go through what\'s working, what to push next, and where the next jobs are coming from.' },
+      { title: 'Priority 24-hour build and edit turnaround', sub: 'You\'re always first in the queue. Anything you need changed is done within 24 hours.' },
     ],
     highlighted: false,
     cta: 'Get Your Quote',
@@ -206,7 +208,7 @@ export default function PricingCards({ compact = false }: PricingCardsProps) {
                       {feature.title}
                     </span>
                     {!compact && feature.sub && (
-                      <span className="font-sans text-xs font-light leading-relaxed" style={{ color: '#5a5854' }}>
+                      <span className="font-sans text-xs leading-relaxed" style={{ color: '#8a8680', marginTop: '2px', display: 'block' }}>
                         {feature.sub}
                       </span>
                     )}
@@ -214,6 +216,13 @@ export default function PricingCards({ compact = false }: PricingCardsProps) {
                 </li>
               ))}
             </ul>
+
+            {/* Closing line — Starter only */}
+            {!compact && tier.closingLine && (
+              <p className="font-sans text-xs italic text-center" style={{ color: '#8a8680', lineHeight: 1.5 }}>
+                &ldquo;{tier.closingLine}&rdquo;
+              </p>
+            )}
 
             {/* CTA */}
             <motion.button
