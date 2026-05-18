@@ -139,7 +139,41 @@ function BrowserMockup({
 }
 
 const cards: CardData[] = [
-  // 1 — C&B Joinery
+  // 1 — Newtown Building
+  {
+    id: 'newtown-building',
+    domain: 'newtownbuilding.com',
+    screenshot: '/images/portfolio-newtown-building.jpg',
+    heroBackground: 'linear-gradient(135deg, #1a1208 0%, #2d1f0e 100%)',
+    heroContent: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <div
+          style={{
+            fontWeight: 800,
+            fontSize: '21px',
+            color: '#f5ede0',
+            letterSpacing: '0.04em',
+            lineHeight: 1.2,
+            textTransform: 'uppercase',
+            maxWidth: '80%',
+          }}
+        >
+          NEWTOWN BUILDING
+        </div>
+        <div style={{ fontSize: '11px', color: 'rgba(245,237,224,0.45)', fontWeight: 400 }}>
+          Joinery &amp; Building Services · Northern Ireland
+        </div>
+      </div>
+    ),
+    ctaColor: '#c8a04e',
+    trade: 'Joiner',
+    clientName: 'Newtown Building',
+    metaText: 'Joiner · Northern Ireland',
+    rating: 5.0,
+    resultPill: 'Live in 5 days · Professional online presence',
+    liveUrl: 'https://newtownbuilding.com',
+  },
+  // 2 — C&B Joinery
   {
     id: 'cb-joinery',
     domain: 'cbjoineryltd.com',
@@ -168,7 +202,7 @@ const cards: CardData[] = [
     resultPill: 'Live same day. 5★ rated.',
     liveUrl: 'https://cbjoineryltd.com',
   },
-  // 2 — Hollyfield Roofing
+  // 3 — Hollyfield Roofing
   {
     id: 'hollyfield-roofing',
     domain: 'hollyfieldroofings.com',
@@ -301,7 +335,7 @@ const cards: CardData[] = [
     resultPill: '20+ years of work. Online in 5 days.',
     liveUrl: 'https://spiresdecorating.com',
   },
-  // 6 — Warwick Roofing
+  // 7 — Warwick Roofing
   {
     id: 'warwick-roofing',
     domain: 'warwickrooftop.co.uk',

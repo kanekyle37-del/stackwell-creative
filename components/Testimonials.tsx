@@ -39,6 +39,14 @@ const testimonials: Testimonial[] = [
   },
   {
     id: 4,
+    name: 'Kasim',
+    company: 'MK Roadside Solutions · Milton Keynes',
+    initial: 'M',
+    quote:
+      "Kyle was amazing help all the way through and got my page set up within a couple of days. He even helped set up my Google Business account. Will continue to use Kyle for anything business related — would recommend to anyone that needs help with their website.",
+  },
+  {
+    id: 5,
     name: 'Brad',
     company: 'C&B Joinery · Barrow-in-Furness',
     initial: 'B',
