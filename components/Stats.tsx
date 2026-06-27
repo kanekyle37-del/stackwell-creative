@@ -64,7 +64,7 @@ const items = [
           backgroundClip: 'text',
         }}
       >
-        <CountUp target={7} isInView={isInView} />
+        <CountUp target={8} isInView={isInView} />
       </span>
     ),
     label: 'Live trade businesses',

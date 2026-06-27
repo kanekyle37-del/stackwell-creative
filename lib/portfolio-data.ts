@@ -91,4 +91,17 @@ export const portfolioData: PortfolioItem[] = [
     imagePlaceholder: '/images/portfolio-mk-roadside.jpg',
     googleRating: 5.0,
   },
+  {
+    id: 'cateraid',
+    clientName: 'CaterAid',
+    niche: 'Catering Engineer',
+    meta: 'Catering Engineer · Belfast',
+    location: 'Belfast, Northern Ireland',
+    url: 'https://cateraid.co.uk',
+    description:
+      'Commercial kitchen engineers in Belfast with 5+ years of experience. Fast response, first time fix — now getting found online when kitchens need them most.',
+    tags: ['Catering', 'Lead Generation', 'Local SEO'],
+    imagePlaceholder: '/images/portfolio-cateraid.jpg',
+    googleRating: 5.0,
+  },
 ]

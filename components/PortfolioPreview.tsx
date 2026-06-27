@@ -335,7 +335,41 @@ const cards: CardData[] = [
     resultPill: '20+ years of work. Online in 5 days.',
     liveUrl: 'https://spiresdecorating.com',
   },
-  // 7 — Warwick Roofing
+  // 7 — CaterAid
+  {
+    id: 'cateraid',
+    domain: 'cateraid.co.uk',
+    screenshot: '/images/portfolio-cateraid.jpg',
+    heroBackground: 'linear-gradient(135deg, #071a08 0%, #0d2610 100%)',
+    heroContent: (
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <div
+          style={{
+            fontWeight: 800,
+            fontSize: '18px',
+            color: '#ffffff',
+            letterSpacing: '0.03em',
+            lineHeight: 1.2,
+            textTransform: 'uppercase',
+            maxWidth: '85%',
+          }}
+        >
+          COMMERCIAL KITCHEN ENGINEERS IN BELFAST
+        </div>
+        <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', fontWeight: 400 }}>
+          Fast Response · First Time Fix
+        </div>
+      </div>
+    ),
+    ctaColor: '#22c55e',
+    trade: 'Catering Engineer',
+    clientName: 'CaterAid',
+    metaText: 'Catering Engineer · Belfast',
+    rating: 5.0,
+    resultPill: '5+ years · Fast response, first time fix',
+    liveUrl: 'https://cateraid.co.uk',
+  },
+  // 8 — Warwick Roofing
   {
     id: 'warwick-roofing',
     domain: 'warwickrooftop.co.uk',
@@ -622,7 +656,7 @@ export default function PortfolioPreview() {
           {/* Stats */}
           <div style={{ display: 'flex', alignItems: 'stretch', gap: 0, flexWrap: 'wrap' }}>
             {[
-              { value: '7', label: 'Live trade sites' },
+              { value: '8', label: 'Live trade sites' },
               { value: '5★', label: 'Average rating' },
               { value: '5 days', label: 'Average build time' },
             ].map((stat, i) => (
