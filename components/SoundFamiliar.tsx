@@ -5,42 +5,42 @@ import { useRef } from 'react'
 
 const points = [
   {
-    id: 'wordofmouth',
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.64a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
-      </svg>
-    ),
-    text: "You're relying on word of mouth and Facebook — but work goes quiet in winter",
-  },
-  {
-    id: 'google',
+    id: 'invisible',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="11" cy="11" r="8" />
         <path d="m21 21-4.35-4.35" />
       </svg>
     ),
-    text: "Your competitors show up on Google every day and get the call before you do",
+    text: "You're invisible on Google — customers search your trade and find your competitor instead",
   },
   {
-    id: 'notfound',
+    id: 'nosystem',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
         <polyline points="12 6 12 12 16 14" />
       </svg>
     ),
-    text: "Customers Google your trade before they ring — if you're not there, you don't exist",
+    text: "Work goes quiet and you don't know why — you've got no system to keep jobs coming in",
   },
   {
     id: 'missedcalls',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.64a16 16 0 006.29 6.29l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
+      </svg>
+    ),
+    text: "You miss a call on the tools and the job goes to whoever picks up next",
+  },
+  {
+    id: 'reviews',
+    icon: (
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#c8a04e" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" />
       </svg>
     ),
-    text: "You're on the job, miss a call, and the customer rings the next person on Google instead",
+    text: "Your Google profile looks bare — no reviews, no photos, nothing to make them trust you",
   },
 ]
 
@@ -113,7 +113,7 @@ export default function SoundFamiliar() {
           className="font-sans text-base text-center mt-10 font-light"
           style={{ color: '#c8a04e' }}
         >
-          We fix all of that. Usually within the week.
+          We fix every one of those.
         </motion.p>
       </div>
     </section>

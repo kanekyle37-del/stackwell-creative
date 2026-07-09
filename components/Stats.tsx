@@ -86,7 +86,7 @@ const items = [
         <CountUp target={5} isInView={isInView} /> Days
       </span>
     ),
-    label: 'First call to launch',
+    label: 'From call to live and working',
     sub: 'Not weeks. Days.',
   },
   {

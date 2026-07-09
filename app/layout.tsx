@@ -19,11 +19,11 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Stackwell Creative — Websites for UK Tradesmen',
+    default: 'Stackwell Creative — Lead Systems for UK Tradesmen',
     template: '%s | Stackwell Creative',
   },
   description:
-    'Custom websites for roofers, plasterers, decorators and tradesmen. Live in 5 days. First enquiry within 30 days or you don\'t pay monthly. From £299.',
+    'We build lead systems for UK tradesmen — site, Google profile, reviews and missed-call recovery. Live in 5 days. First enquiry in 30 days or you stop paying monthly.',
   keywords: [
     'website design for tradesmen',
     'roofer website',
@@ -40,14 +40,14 @@ export const metadata: Metadata = {
     locale: 'en_GB',
     url: 'https://stackwellcreative.com',
     siteName: 'Stackwell Creative',
-    title: 'Stackwell Creative — Websites That Win Work',
+    title: 'Stackwell Creative — Lead Systems for UK Tradesmen',
     description:
-      'Professional websites for UK tradesmen. Built to get you found on Google and bring in paying customers.',
+      'We build lead systems for UK tradesmen — site, Google profile, reviews and missed-call recovery. Live in 5 days. First enquiry in 30 days or you stop paying monthly.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Stackwell Creative — Websites That Win Work',
-    description: 'Professional websites for UK tradesmen. Built to get you found on Google and bring in paying customers.',
+    title: 'Stackwell Creative — Lead Systems for UK Tradesmen',
+    description: 'We build lead systems for UK tradesmen — site, Google profile, reviews and missed-call recovery. Live in 5 days. First enquiry in 30 days or you stop paying monthly.',
   },
   robots: {
     index: true,

@@ -264,7 +264,7 @@ export default function Hero() {
               className="font-sans font-semibold leading-[1.05]"
               style={{ fontSize: 'clamp(2.8rem, 5.5vw, 4.5rem)' }}
             >
-              Websites That
+              Your Phone.
               <br />
               <span
                 className="italic font-light"
@@ -275,7 +275,7 @@ export default function Hero() {
                   backgroundClip: 'text',
                 }}
               >
-                Win Work
+                Ringing.
               </span>
             </motion.h1>
 
@@ -285,8 +285,7 @@ export default function Hero() {
               className="font-sans font-light leading-relaxed"
               style={{ fontSize: 'clamp(1rem, 1.8vw, 1.125rem)', color: '#8a8680', maxWidth: '480px' }}
             >
-              When someone nearby searches for a roofer, decorator, or plasterer, they call
-              whoever comes up first. Right now that&apos;s probably not you. We change that in 5 days.
+              Most tradesmen rely on word of mouth until it goes quiet. We build you a lead system — site, Google, reviews and missed-call recovery — so the phone rings without you chasing it.
             </motion.p>
 
             {/* CTA buttons */}
@@ -302,7 +301,7 @@ export default function Hero() {
                 onMouseLeave={e => { e.currentTarget.style.background = '#c8a04e' }}
                 aria-label="Get a free quote — scroll to contact form"
               >
-                Get Your Free Website Preview
+                Get Your Free Demo
                 <svg width="15" height="15" viewBox="0 0 15 15" fill="none" className="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true">
                   <path d="M3 7.5h9M8.5 4l3.5 3.5L8.5 11" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
@@ -319,7 +318,7 @@ export default function Hero() {
                 onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(200,160,78,0.3)'; e.currentTarget.style.color = '#e8e4dc' }}
                 aria-label="See our work — scroll to portfolio"
               >
-                See Our Work
+                See Client Results
               </motion.button>
             </motion.div>
 

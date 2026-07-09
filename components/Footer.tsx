@@ -53,7 +53,7 @@ export default function Footer() {
           <div className="space-y-4">
             <StackwellLogoSmall />
             <p className="font-sans text-sm text-text-muted leading-relaxed max-w-xs">
-              Websites for UK tradesmen that actually bring in work.
+              Lead systems for UK tradesmen. Sites, Google, reviews and missed-call recovery — built to get your phone ringing.
             </p>
           </div>
 

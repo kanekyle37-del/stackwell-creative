@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Stackwell Creative — Websites That Win Work'
+export const alt = 'Stackwell Creative — Lead Systems for UK Tradesmen'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -81,8 +81,8 @@ export default function OGImage() {
             maxWidth: '900px',
           }}
         >
-          Websites That{' '}
-          <span style={{ color: '#c8a04e' }}>Win Work</span>
+          Your Phone.{' '}
+          <span style={{ color: '#c8a04e' }}>Ringing.</span>
         </div>
 
         {/* Subheadline */}
@@ -97,7 +97,7 @@ export default function OGImage() {
             marginBottom: '40px',
           }}
         >
-          Professional websites for UK tradesmen. Built to get you found on Google and bring in paying customers.
+          Lead systems for UK tradesmen. Site, Google, reviews and missed-call recovery — built to get your phone ringing.
         </div>
 
         {/* Trust badges */}

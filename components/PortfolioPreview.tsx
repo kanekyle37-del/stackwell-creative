@@ -609,7 +609,7 @@ export default function PortfolioPreview() {
               id="portfolio-heading"
               style={{ fontFamily: 'var(--font-cormorant)', fontSize: 'clamp(28px, 4vw, 40px)', fontWeight: 400, color: '#e8e4dc', lineHeight: 1.1 }}
             >
-              Sites out there winning work.
+              Client results, out there winning work.
             </h2>
             {/* Mobile: swipe hint below headline */}
             <p className="sm:hidden mt-3 text-center" style={{ fontSize: '14px', color: '#8a8680', fontStyle: 'italic', fontFamily: 'var(--font-outfit)', fontWeight: 300 }}>
@@ -656,7 +656,7 @@ export default function PortfolioPreview() {
           {/* Stats */}
           <div style={{ display: 'flex', alignItems: 'stretch', gap: 0, flexWrap: 'wrap' }}>
             {[
-              { value: '8', label: 'Live trade sites' },
+              { value: '8', label: 'Live trade businesses' },
               { value: '5★', label: 'Average rating' },
               { value: '5 days', label: 'Average build time' },
             ].map((stat, i) => (

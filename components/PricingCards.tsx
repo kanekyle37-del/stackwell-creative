@@ -47,7 +47,7 @@ export const pricingTiers: PricingTier[] = [
     ],
     closingLine: 'Everything you need to get online and start being found.',
     highlighted: false,
-    cta: 'Get Your Quote',
+    cta: 'Get Started',
   },
   {
     id: 'growth',
@@ -55,7 +55,7 @@ export const pricingTiers: PricingTier[] = [
     upfront: '£499',
     monthly: '£149',
     tagline: 'Everything you need to get found and keep the phone ringing.',
-    smallPrint: 'One job won pays for the first year',
+    smallPrint: "One job won pays for the first year — and if you don't get an enquiry in 30 days, we pause your monthly until you do.",
     description: 'Everything you need to get found and keep the phone ringing.',
     features: [
       { title: 'A site built to get you the call', sub: 'Mobile-first, fast, designed so customers ring you, not your competitor.' },
@@ -68,7 +68,7 @@ export const pricingTiers: PricingTier[] = [
       { title: 'Need a change? Done within 2 days', sub: 'No waiting around when you need something updated.' },
     ],
     highlighted: true,
-    cta: 'Get Your Quote',
+    cta: 'Get Started',
   },
   {
     id: 'pro',
@@ -86,7 +86,7 @@ export const pricingTiers: PricingTier[] = [
       { title: 'Jump the queue on changes', sub: 'Updates done within 24 hours, priority over everyone else.' },
     ],
     highlighted: false,
-    cta: 'Get Your Quote',
+    cta: 'Get Started',
   },
 ]
 

@@ -5,15 +5,16 @@ import HowItWorks from '@/components/HowItWorks'
 import PortfolioPreview from '@/components/PortfolioPreview'
 import Testimonials from '@/components/Testimonials'
 import SoundFamiliar from '@/components/SoundFamiliar'
+import TheSystem from '@/components/TheSystem'
 import PlatformTrustStrip from '@/components/PlatformTrustStrip'
 import PricingCards from '@/components/PricingCards'
 import FinalCTA from '@/components/FinalCTA'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Stackwell Creative — Websites That Win Work',
+  title: 'Stackwell Creative — Lead Systems for UK Tradesmen',
   description:
-    'Professional websites for UK tradesmen. Built to get you found on Google and bring in paying customers.',
+    'We build lead systems for UK tradesmen — site, Google profile, reviews and missed-call recovery. Live in 5 days. First enquiry in 30 days or you stop paying monthly.',
 }
 
 function PricingPreviewSection() {
@@ -85,8 +86,9 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Stats />
       <SoundFamiliar />
+      <Stats />
+      <TheSystem />
       <HowItWorks />
       <PortfolioPreview />
       <Testimonials />

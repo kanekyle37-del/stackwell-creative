@@ -382,7 +382,7 @@ export default function ContactForm() {
                           Sending...
                         </>
                       ) : (
-                        'Get Your Free Website Preview'
+                        'Get Your Free Demo'
                       )}
                     </motion.button>
 

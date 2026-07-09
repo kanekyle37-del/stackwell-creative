@@ -13,15 +13,15 @@ const steps = [
   },
   {
     icon: Monitor,
-    title: 'We Build It',
+    title: 'We Build Your System',
     description:
-      'We build your site around your trade, your patch, and your real Google reviews. Custom-built around you. Live within 5 days. You don\'t write a single word.',
+      'We build your site around your trade and your patch. Your Google profile gets set up and optimised. Missed-call texts go live. Review requests start going out. Done in 5 days. You don\'t write a single word.',
   },
   {
     icon: Users,
-    title: 'Start Getting Leads',
+    title: 'Your Phone Starts Ringing',
     description:
-      "Your site goes live and starts working. Someone nearby searches your trade, finds you, sees your reviews and calls. You answer. That's the whole job.",
+      "Someone nearby searches your trade, finds you on Google, sees your reviews, and calls. You pick up — or if you miss it, they get a text back instantly. That's the system working.",
   },
 ]
 
@@ -158,7 +158,7 @@ export default function HowItWorks() {
             How it works
           </h2>
           <p className="font-sans text-base text-text-muted font-light leading-relaxed max-w-lg">
-            Three steps from first conversation to your site going live.
+            Three steps from first call to a system that fills your diary.
           </p>
         </motion.div>
 

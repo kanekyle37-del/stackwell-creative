@@ -220,7 +220,7 @@ function LPForm() {
             <svg className="animate-spin w-4 h-4" viewBox="0 0 24 24" fill="none"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" /><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" /></svg>
             Sending…
           </>
-        ) : 'Get Your Free Website Preview'}
+        ) : 'Get Your Free Demo'}
       </button>
 
       <p className="font-sans text-xs text-center font-light mt-1" style={{ color: '#5a5854' }}>
@@ -310,7 +310,7 @@ export default function LandingPage() {
               className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-4 rounded font-sans font-semibold text-base tracking-wide cursor-pointer transition-opacity duration-200 hover:opacity-90"
               style={{ background: '#c8a04e', color: '#0f1117', minWidth: '220px' }}
             >
-              Get Your Free Website Preview
+              Get Your Free Demo
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </button>
             <a
@@ -538,7 +538,7 @@ export default function LandingPage() {
         <div className="max-w-xl mx-auto px-4 sm:px-6">
           {/* Heading */}
           <div className="text-center mb-8">
-            <p className="font-sans text-xs font-medium tracking-widest uppercase mb-3" style={{ color: 'rgba(200,160,78,0.7)' }}>Free Website Preview</p>
+            <p className="font-sans text-xs font-medium tracking-widest uppercase mb-3" style={{ color: 'rgba(200,160,78,0.7)' }}>Free Demo</p>
             <h2 className="font-sans text-3xl sm:text-4xl font-semibold leading-tight" style={{ color: '#e8e4dc' }}>
               Leave your number.{' '}
               <span style={{ background: 'linear-gradient(135deg, #9a7a3a 0%, #c8a04e 50%, #e8c96e 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text', fontStyle: 'italic' }}>

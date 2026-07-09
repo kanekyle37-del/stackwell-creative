@@ -160,7 +160,7 @@ export default function Testimonials() {
           Real results, real trades.
         </h2>
         <p style={{ fontSize: '14px', color: '#8a8680', fontFamily: 'var(--font-outfit)', fontWeight: 300 }}>
-          Don&apos;t take our word for it — here&apos;s what our clients say.
+          Don&apos;t take our word for it — here&apos;s what tradesmen say.
         </p>
       </motion.div>
 
