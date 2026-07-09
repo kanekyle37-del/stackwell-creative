@@ -264,7 +264,9 @@ export default function Hero() {
               className="font-sans font-semibold leading-[1.05]"
               style={{ fontSize: 'clamp(2.8rem, 5.5vw, 4.5rem)' }}
             >
-              Get Found. Get The Call.
+              Get Found.
+              <br />
+              Get The Call.
               <br />
               <span
                 className="italic font-light"
