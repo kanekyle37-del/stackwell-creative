@@ -264,7 +264,7 @@ export default function Hero() {
               className="font-sans font-semibold leading-[1.05]"
               style={{ fontSize: 'clamp(2.8rem, 5.5vw, 4.5rem)' }}
             >
-              Your Phone.
+              Get Found. Get The Call.
               <br />
               <span
                 className="italic font-light"
@@ -275,7 +275,7 @@ export default function Hero() {
                   backgroundClip: 'text',
                 }}
               >
-                Ringing.
+                Get The Job.
               </span>
             </motion.h1>
 
